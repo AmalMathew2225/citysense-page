@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CitySense — The Operating System for Modern Governance</title>
+<meta name="description" content="Real-time urban infrastructure monitoring powered by AI and IoT. Data-driven precision for the leaders of tomorrow. CitySense is the definitive operating system for modern metropolises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0A1628;
+  color: #F1F5F9;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A1628; }
+::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #22C55E; }
+
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --bg-base: #0A1628;
+  --bg-surface: #111827;
+  --bg-card: #1E293B;
+  --accent: #22C55E;
+  --text-primary: #F1F5F9;
+  --text-muted: #94A3B8;
+  --border: rgba(255,255,255,0.08);
+  --border-green: rgba(34,197,94,0.25);
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --max-width: 1200px;
+  --section-pad: 100px;
+}
+
+/* ===== UTILITIES ===== */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+.label-tag {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 500;
+}
+.section-pad { padding: var(--section-pad) 0; }
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: var(--text-primary); }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+}
+.btn-primary {
+  background: var(--accent); color: #0A1628;
+}
+.btn-primary:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.25); }
+.btn-secondary {
+  background: transparent; color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.btn-secondary:hover { background: rgba(34,197,94,0.08); transform: translateY(-2px); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+@keyframes drawLine {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ===== DOT GRID BACKGROUND ===== */
+.dot-grid {
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(10,22,40,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.navbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: 22px; font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+}
+.navbar-links { display: flex; gap: 32px; align-items: center; }
+.navbar-links a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  transition: color 0.3s;
+}
+.navbar-links a:hover { color: var(--text-primary); }
+.navbar-cta {
+  padding: 8px 20px !important;
+  font-size: 13px !important;
+}
+.mobile-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px;
+}
+.mobile-toggle span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s;
+}
+
+/* ========================================
+   SECTION 1 — HERO
+   ======================================== */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  padding-top: 64px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  padding: 6px 16px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+.hero-label .pulse-dot { width: 6px; height: 6px; }
+.hero-title {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero-title .green { color: var(--accent); }
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+.hero-buttons { display: flex; gap: 16px; margin-bottom: 48px; }
+.hero-stats {
+  display: flex; gap: 0; align-items: stretch;
+}
+.hero-stat {
+  padding-right: 32px;
+}
+.hero-stat + .hero-stat {
+  padding-left: 32px;
+  border-left: 1px solid var(--border);
+}
+.hero-stat-value {
+  font-family: var(--font-heading);
+  font-size: 32px; font-weight: 800;
+  color: var(--accent);
+}
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+/* Hero dashboard */
+.hero-dashboard {
+  background: rgba(17,24,39,0.6);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+  animation: float 6s ease-in-out infinite;
+}
+.dashboard-main {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.dashboard-main-header {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.dashboard-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.dashboard-sub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.dashboard-sub-card .card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.dashboard-sub-card .card-value {
+  font-family: var(--font-heading);
+  font-size: 28px; font-weight: 800;
+  color: var(--accent);
+  display: flex; align-items: baseline; gap: 4px;
+}
+.dashboard-sub-card .card-value .unit {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ========================================
+   SECTION 2 — ABOUT
+   ======================================== */
+#about { background: var(--bg-surface); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-headline {
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 16px 0 12px;
+}
+.about-accent-bar {
+  width: 48px; height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+.about-text {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.about-pills {
+  display: flex; gap: 16px;
+  margin-top: 32px;
+}
+.about-pill {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 18px;
+}
+.about-pill-icon {
+  width: 36px; height: 36px;
+  background: rgba(34,197,94,0.1);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-pill-text .pill-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.about-pill-text .pill-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+/* About right — urban data mesh */
+.about-visual {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.about-visual-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.about-visual-header .title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 8px;
+}
+.about-visual-header .dots {
+  display: flex; gap: 6px;
+}
+.about-visual-header .dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.3;
+}
+.about-visual-header .dots span:last-child { background: var(--accent); opacity: 1; }
+.about-visual-body {
+  padding: 24px;
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ========================================
+   SECTION 3 — WHY
+   ======================================== */
+#why { background: var(--bg-base); }
+.why-center { text-align: center; }
+.why-headline {
+  font-size: 40px;
+  margin: 16px 0 48px;
+}
+.why-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.why-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+}
+.why-stat-card .stat-value {
+  font-family: var(--font-heading);
+  font-size: 64px; font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.why-stat-card .stat-label {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.why-body {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ========================================
+   SECTION 4 — RECOGNITION
+   ======================================== */
+#recognition { background: var(--bg-surface); }
+.recognition-center { text-align: center; }
+.recognition-headline {
+  font-size: 36px;
+  margin: 16px 0 12px;
+}
+.recognition-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 48px;
+}
+.award-strip {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.award-badge {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  min-width: 180px;
+}
+.award-icon {
+  width: 48px; height: 48px;
+  background: rgba(34,197,94,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.award-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-green);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: left;
+}
+.testimonial-quote {
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.testimonial-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.testimonial-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.testimonial-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+/* ========================================
+   SECTION 5 — CAPABILITIES
+   ======================================== */
+#capabilities { background: var(--bg-base); }
+.capabilities-center { text-align: center; }
+.capabilities-headline {
+  font-size: 40px;
+  margin: 16px 0 12px;
+}
+.capabilities-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.capability-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: left;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.capability-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34,197,94,0.3);
+  box-shadow: 0 8px 32px rgba(34,197,94,0.08);
+}
+.capability-icon {
+  width: 44px; height: 44px;
+  background: rgba(34,197,94,0.1);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.capability-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.capability-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========================================
+   SECTION 6 — ARCHITECTURE
+   ======================================== */
+#architecture { background: var(--bg-surface); }
+.arch-center { text-align: center; }
+.arch-headline {
+  font-size: 40px;
+  margin: 16px 0 8px;
+}
+.arch-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 48px;
+}
+.arch-layers {
+  display: flex; flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.arch-layer {
+  display: flex;
+  align-items: center;
+  background: rgba(30,41,59,0.5);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 28px;
+  gap: 28px;
+}
+.arch-layer-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 260px;
+}
+.arch-layer-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.arch-layer-items {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.arch-diagram {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+.arch-diagram-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* ========================================
+   SECTION 7 — PIPELINE
+   ======================================== */
+#pipeline { background: var(--bg-base); }
+.pipeline-headline {
+  font-size: 40px;
+  margin: 16px 0 8px;
+}
+.pipeline-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 56px;
+}
+.timeline {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 48px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item:nth-child(odd) {
+  justify-content: flex-start;
+  padding-right: calc(50% + 40px);
+}
+.timeline-item:nth-child(even) {
+  justify-content: flex-end;
+  padding-left: calc(50% + 40px);
+}
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 14px; height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  border: 3px solid var(--bg-base);
+  z-index: 2;
+}
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.timeline-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap;
+}
+.timeline-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.badge-completed { color: var(--accent); border: 1px solid var(--accent); }
+.badge-progress { color: #F59E0B; border: 1px solid #F59E0B; }
+.badge-upcoming { color: var(--text-muted); border: 1px solid var(--text-muted); }
+.timeline-card-body {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* ========================================
+   SECTION 8 — DMFS
+   ======================================== */
+#dmfs { background: var(--bg-surface); }
+.dmfs-outer {
+  background: var(--bg-card);
+  border: 1px solid var(--border-green);
+  border-radius: 12px;
+  padding: 40px;
+}
+.dmfs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.dmfs-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.dmfs-headline {
+  font-size: 36px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.dmfs-body {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.dmfs-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+.dmfs-stat .stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.dmfs-stat .stat-value {
+  font-family: var(--font-heading);
+  font-size: 28px; font-weight: 800;
+  color: var(--accent);
+}
+.dmfs-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 24px;
+}
+/* DMFS network map */
+.dmfs-visual {
+  background: rgba(10,22,40,0.8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.dmfs-visual-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+.dmfs-visual-body {
+  padding: 20px;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   SECTION 9 — RESEARCH
+   ======================================== */
+#research { background: var(--bg-base); }
+.research-headline {
+  font-size: 40px;
+  margin: 16px 0 8px;
+}
+.research-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.research-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 48px;
+}
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.research-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.research-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34,197,94,0.2);
+}
+.research-card-img {
+  height: 160px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(10,22,40,0.9) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.research-card-content {
+  padding: 24px;
+}
+.research-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.research-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.research-card-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.research-card-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+.research-card-link:hover { opacity: 0.7; }
+.research-cta { text-align: center; }
+
+/* ========================================
+   SECTION 10 — PARTNERSHIPS
+   ======================================== */
+#partnerships { background: var(--bg-surface); }
+.partnerships-center { text-align: center; }
+.partnerships-headline {
+  font-size: 40px;
+  margin: 16px 0 48px;
+}
+.partnerships-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.partnership-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: left;
+}
+.partnership-icon {
+  width: 44px; height: 44px;
+  background: rgba(34,197,94,0.1);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.partnership-tier {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.partnership-list {
+  list-style: none;
+}
+.partnership-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.partnership-list li svg { flex-shrink: 0; margin-top: 2px; }
+.partnerships-cta { text-align: center; }
+.partnerships-cta .btn {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 16px 40px;
+  font-size: 14px;
+}
+
+/* ========================================
+   SECTION 11 — TEAM
+   ======================================== */
+#team { background: var(--bg-base); }
+.team-center { text-align: center; }
+.team-headline {
+  font-size: 40px;
+  margin: 16px 0 12px;
+}
+.team-sub {
+  color: var(--text-muted);
+  font-size: 16px;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.team-card:hover { border-color: rgba(34,197,94,0.2); }
+.team-avatar {
+  width: 80px; height: 80px;
+  background: var(--bg-surface);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--border);
+}
+.team-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.team-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.team-social {
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.team-card:hover .team-social { opacity: 0.6; }
+
+/* ========================================
+   SECTION 12 — CONTACT / FOOTER
+   ======================================== */
+#contact {
+  background: #070F1C;
+  padding-top: 0;
+}
+.contact-top {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.footer-content {
+  padding: 60px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .footer-logo {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.footer-brand .footer-tagline {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.footer-brand-icons {
+  display: flex;
+  gap: 12px;
+}
+.footer-brand-icons a {
+  width: 36px; height: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.footer-brand-icons a:hover { border-color: var(--accent); color: var(--accent); }
+.footer-legal-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.footer-legal-links {
+  list-style: none;
+}
+.footer-legal-links li { margin-bottom: 10px; }
+.footer-legal-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.footer-legal-links a:hover { color: var(--accent); }
+/* Contact form */
+.footer-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-green);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.footer-form-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.footer-form-header .title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-row.full { flex-direction: column; }
+.form-input {
+  flex: 1;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input::placeholder { color: var(--text-muted); }
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+}
+textarea.form-input { resize: vertical; min-height: 100px; }
+.form-submit {
+  display: flex; justify-content: flex-end;
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-grid, .about-grid, .dmfs-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 42px; }
+  .hero-dashboard { margin-top: 40px; }
+  .capabilities-grid, .testimonials, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .arch-layer { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .arch-layer-num { min-width: auto; }
+}
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 64px;
+  }
+  .navbar-links { display: none; }
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0; right: 0;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-toggle { display: flex; }
+  .hero-title { font-size: 36px; }
+  .hero-sub { font-size: 16px; }
+  .hero-buttons { flex-direction: column; }
+  .hero-stats { flex-direction: column; gap: 20px; }
+  .hero-stat + .hero-stat { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
+  .capabilities-grid, .testimonials, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+    grid-template-columns: 1fr;
+  }
+  .about-pills { flex-direction: column; }
+  .dmfs-stats { flex-direction: column; gap: 16px; }
+  .dmfs-outer { padding: 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .form-row { flex-direction: column; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .timeline::before { left: 20px; }
+  .timeline-dot { left: 20px; }
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    padding-left: 56px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+  h2 { font-size: 32px !important; }
+  .award-strip { gap: 16px; }
+  .award-badge { min-width: 140px; padding: 16px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 30px; }
+  .hero-stat-value { font-size: 24px; }
+  .why-stat-card .stat-value { font-size: 48px; }
+  .dmfs-stat .stat-value { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="container" style="max-width: var(--max-width);">
+    <a href="#hero" class="navbar-logo">CitySense</a>
+    <div class="navbar-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#research">Research</a>
+      <a href="#team">Team</a>
+      <a href="#contact" class="btn btn-primary navbar-cta">Contact Us</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========================================
+     SECTION 1 — HERO
+     ======================================== -->
+<section id="hero" class="dot-grid">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div class="reveal">
+        <div class="hero-label">
+          <span class="pulse-dot"></span>
+          <span class="label-tag">SYSTEM ONLINE</span>
+        </div>
+        <h1 class="hero-title">
+          The Operating System for<br>
+          <span class="green">Modern Governance.</span>
+        </h1>
+        <p class="hero-sub">Real-time urban infrastructure monitoring powered by AI and IoT. Data-driven precision for the leaders of tomorrow.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Request Demo →</a>
+          <a href="#architecture" class="btn btn-secondary">View Architecture</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-value">2.4M</div>
+            <div class="hero-stat-label">Sensors Active</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">&lt;10ms</div>
+            <div class="hero-stat-label">Data Latency</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">99.9%</div>
+            <div class="hero-stat-label">Uptime</div>
+          </div>
+        </div>
+      </div>
+      <!-- Right — Dashboard -->
+      <div class="reveal" style="transition-delay: 0.2s;">
+        <div class="hero-dashboard">
+          <div class="dashboard-main">
+            <div class="dashboard-main-header">Grid Integrity</div>
+            <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#22C55E" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 120 C60 110, 100 80, 140 85 C180 90, 200 60, 240 55 C280 50, 320 40, 360 35 C400 30, 420 20, 440 15" 
+                    stroke="#22C55E" stroke-width="2.5" fill="none"
+                    stroke-dasharray="600" stroke-dashoffset="600"
+                    id="chartLine">
+                <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2s" fill="freeze" begin="0.5s"/>
+              </path>
+              <path d="M0 120 C60 110, 100 80, 140 85 C180 90, 200 60, 240 55 C280 50, 320 40, 360 35 C400 30, 420 20, 440 15 L440 140 L0 140 Z" 
+                    fill="url(#chartGrad)" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="1s" fill="freeze" begin="2s"/>
+              </path>
+              <!-- Data points -->
+              <circle cx="140" cy="85" r="4" fill="#22C55E" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.5s"/>
+              </circle>
+              <circle cx="300" cy="38" r="4" fill="#22C55E" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2s"/>
+              </circle>
+              <circle cx="440" cy="15" r="4" fill="#22C55E" opacity="0">
+                <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.3s"/>
+              </circle>
+            </svg>
+          </div>
+          <div class="dashboard-sub-grid">
+            <div class="dashboard-sub-card">
+              <div class="card-label">Traffic Flux</div>
+              <svg width="100%" height="48" viewBox="0 0 180 48" fill="none">
+                <path d="M0 40 C30 35, 50 20, 80 25 C110 30, 130 15, 180 10" stroke="#22C55E" stroke-width="1.5" fill="none" opacity="0.5"/>
+                <circle cx="80" cy="25" r="3" fill="#22C55E"/>
+              </svg>
+              <div class="card-value">84 <span class="unit">idx</span></div>
+            </div>
+            <div class="dashboard-sub-card">
+              <div class="card-label">Power Load</div>
+              <svg width="100%" height="48" viewBox="0 0 180 48" fill="none">
+                <rect x="10" y="30" width="16" height="18" rx="2" fill="rgba(34,197,94,0.15)"/>
+                <rect x="34" y="22" width="16" height="26" rx="2" fill="rgba(34,197,94,0.2)"/>
+                <rect x="58" y="14" width="16" height="34" rx="2" fill="rgba(34,197,94,0.3)"/>
+                <rect x="82" y="18" width="16" height="30" rx="2" fill="rgba(34,197,94,0.4)"/>
+                <rect x="106" y="8" width="16" height="40" rx="2" fill="rgba(34,197,94,0.5)"/>
+                <rect x="130" y="12" width="16" height="36" rx="2" fill="#22C55E" opacity="0.6"/>
+              </svg>
+              <div class="card-value">62<span class="unit">%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 2 — ABOUT
+     ======================================== -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left -->
+      <div class="reveal">
+        <span class="label-tag">ABOUT CITYSENSE</span>
+        <h2 class="about-headline">Intelligence for the<br>Urban Frontier.</h2>
+        <div class="about-accent-bar"></div>
+        <p class="about-text">CitySense is the definitive operating system for modern metropolises. We bridge the gap between physical infrastructure and digital intelligence, empowering civic leaders with unprecedented control and visibility.</p>
+        <p class="about-text">By synthesizing complex, real-time data streams — from critical infrastructure health to dynamic traffic flows and localized energy distribution — our platform transforms municipal operations from reactive management into predictive governance.</p>
+        <div class="about-pills">
+          <div class="about-pill">
+            <div class="about-pill-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div class="about-pill-text">
+              <div class="pill-title">REAL-TIME SYNC</div>
+              <div class="pill-sub">Lat: &lt; 50ms</div>
+            </div>
+          </div>
+          <div class="about-pill">
+            <div class="about-pill-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="about-pill-text">
+              <div class="pill-title">DATA SECURITY</div>
+              <div class="pill-sub">Gov-Grade E2EE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right — Urban Data Mesh -->
+      <div class="reveal" style="transition-delay: 0.15s;">
+        <div class="about-visual">
+          <div class="about-visual-header">
+            <div class="title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              URBAN DATA MESH
+            </div>
+            <div class="dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="about-visual-body">
+            <svg width="100%" height="360" viewBox="0 0 460 360" fill="none">
+              <!-- Ground grid -->
+              <g opacity="0.15">
+                <line x1="60" y1="280" x2="230" y2="340" stroke="#22C55E" stroke-width="0.5"/>
+                <line x1="230" y1="340" x2="400" y2="280" stroke="#22C55E" stroke-width="0.5"/>
+                <line x1="400" y1="280" x2="230" y2="220" stroke="#22C55E" stroke-width="0.5"/>
+                <line x1="230" y1="220" x2="60" y2="280" stroke="#22C55E" stroke-width="0.5"/>
+                <line x1="145" y1="250" x2="315" y2="310" stroke="#22C55E" stroke-width="0.5"/>
+                <line x1="145" y1="310" x2="315" y2="250" stroke="#22C55E" stroke-width="0.5"/>
+              </g>
+              <!-- Buildings - isometric style -->
+              <!-- Building 1 - tall -->
+              <g>
+                <polygon points="100,240 100,140 130,125 130,225" fill="#1E293B" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="100,140 145,155 145,255 100,240" fill="#111827" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="100,140 130,125 175,140 145,155" fill="#253349" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <!-- Windows -->
+                <rect x="107" y="155" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="107" y="170" width="8" height="6" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="107" y="185" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="107" y="200" width="8" height="6" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="120" y="160" width="8" height="6" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="120" y="175" width="8" height="6" fill="rgba(34,197,94,0.15)" rx="1"/>
+                <rect x="120" y="190" width="8" height="6" fill="rgba(34,197,94,0.4)" rx="1"/>
+              </g>
+              <!-- Building 2 - medium -->
+              <g>
+                <polygon points="180,270 180,190 210,175 210,255" fill="#1E293B" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="180,190 225,205 225,285 180,270" fill="#111827" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="180,190 210,175 255,190 225,205" fill="#253349" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <rect x="187" y="205" width="8" height="6" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="187" y="220" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="187" y="235" width="8" height="6" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="200" y="210" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="200" y="225" width="8" height="6" fill="rgba(34,197,94,0.3)" rx="1"/>
+              </g>
+              <!-- Building 3 - wide short -->
+              <g>
+                <polygon points="260,280 260,220 290,205 290,265" fill="#1E293B" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="260,220 330,240 330,300 260,280" fill="#111827" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="260,220 290,205 360,225 330,240" fill="#253349" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <rect x="270" y="235" width="8" height="6" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="270" y="250" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="285" y="245" width="8" height="6" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="300" y="250" width="8" height="6" fill="rgba(34,197,94,0.2)" rx="1"/>
+              </g>
+              <!-- Building 4 - tallest -->
+              <g>
+                <polygon points="340,270 340,120 365,108 365,258" fill="#1E293B" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="340,120 385,135 385,285 340,270" fill="#111827" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polygon points="340,120 365,108 410,123 385,135" fill="#253349" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <rect x="348" y="135" width="6" height="5" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="348" y="148" width="6" height="5" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="348" y="161" width="6" height="5" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="348" y="174" width="6" height="5" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="348" y="187" width="6" height="5" fill="rgba(34,197,94,0.15)" rx="1"/>
+                <rect x="348" y="200" width="6" height="5" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="348" y="213" width="6" height="5" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="348" y="226" width="6" height="5" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="360" y="140" width="6" height="5" fill="rgba(34,197,94,0.3)" rx="1"/>
+                <rect x="360" y="153" width="6" height="5" fill="rgba(34,197,94,0.2)" rx="1"/>
+                <rect x="360" y="166" width="6" height="5" fill="rgba(34,197,94,0.4)" rx="1"/>
+                <rect x="360" y="179" width="6" height="5" fill="rgba(34,197,94,0.15)" rx="1"/>
+                <rect x="360" y="192" width="6" height="5" fill="rgba(34,197,94,0.3)" rx="1"/>
+              </g>
+              <!-- Data connection lines -->
+              <g>
+                <line x1="122" y1="130" x2="195" y2="95" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" opacity="0.6">
+                  <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="195" y1="95" x2="280" y2="75" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" opacity="0.6">
+                  <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="280" y1="75" x2="355" y2="95" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" opacity="0.6">
+                  <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="195" y1="95" x2="195" y2="175" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" opacity="0.4">
+                  <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="355" y1="95" x2="355" y2="110" stroke="#22C55E" stroke-width="1" stroke-dasharray="4 3" opacity="0.4">
+                  <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.5s" repeatCount="indefinite"/>
+                </line>
+              </g>
+              <!-- Data nodes -->
+              <circle cx="122" cy="130" r="5" fill="#22C55E" opacity="0.8">
+                <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="195" cy="95" r="5" fill="#22C55E" opacity="0.8">
+                <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="280" cy="75" r="6" fill="#22C55E" opacity="0.9">
+                <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="355" cy="95" r="5" fill="#22C55E" opacity="0.8">
+                <animate attributeName="r" values="5;7;5" dur="3.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Floating chart icons -->
+              <g transform="translate(70,60)">
+                <rect width="40" height="28" rx="4" fill="rgba(30,41,59,0.9)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <polyline points="6,20 14,12 22,16 30,6 36,10" stroke="#22C55E" stroke-width="1.5" fill="none"/>
+              </g>
+              <g transform="translate(340,40)">
+                <rect width="44" height="28" rx="4" fill="rgba(30,41,59,0.9)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+                <rect x="6" y="16" width="6" height="8" rx="1" fill="rgba(34,197,94,0.4)"/>
+                <rect x="14" y="10" width="6" height="14" rx="1" fill="rgba(34,197,94,0.6)"/>
+                <rect x="22" y="12" width="6" height="12" rx="1" fill="rgba(34,197,94,0.5)"/>
+                <rect x="30" y="6" width="6" height="18" rx="1" fill="#22C55E" opacity="0.8"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 3 — WHY
+     ======================================== -->
+<section id="why" class="section-pad">
+  <div class="container">
+    <div class="why-center reveal">
+      <span class="label-tag">THE PROBLEM</span>
+      <h2 class="why-headline">Why Cities Need Smarter Infrastructure</h2>
+    </div>
+    <div class="why-stats reveal">
+      <div class="why-stat-card">
+        <div class="stat-value">68%</div>
+        <div class="stat-label">of urban infrastructure is over 30 years old</div>
+      </div>
+      <div class="why-stat-card">
+        <div class="stat-value">$3.9T</div>
+        <div class="stat-label">annual global cost of inefficient city operations</div>
+      </div>
+      <div class="why-stat-card">
+        <div class="stat-value">2.5B</div>
+        <div class="stat-label">more people will live in cities by 2050</div>
+      </div>
+    </div>
+    <p class="why-body reveal">Legacy systems built for yesterday's cities cannot handle tomorrow's demands. CitySense provides the intelligence layer that transforms aging infrastructure into responsive, predictive urban ecosystems.</p>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 4 — RECOGNITION
+     ======================================== -->
+<section id="recognition" class="section-pad">
+  <div class="container">
+    <div class="recognition-center reveal">
+      <span class="label-tag">RECOGNITION &amp; VALIDATION</span>
+      <h2 class="recognition-headline">Validated by Industry Leaders</h2>
+      <p class="recognition-sub">Trusted by major municipalities and recognized globally for advancing urban infrastructure management.</p>
+    </div>
+    <div class="award-strip reveal">
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div class="award-name">Urban Innovation Award</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="award-name">Smart City Alliance</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="award-name">Infrastructure Excellence</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="award-name">Global Governance Forum</div>
+      </div>
+    </div>
+    <div class="testimonials reveal">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&#10077;</div>
+        <p class="testimonial-text">CitySense has fundamentally transformed our approach to preventative maintenance. The level of granular data visibility across our grid is unprecedented, allowing us to allocate resources with surgical precision.</p>
+        <div class="testimonial-name">Dr. Elena Rostova</div>
+        <div class="testimonial-role">Director of Urban Planning, Singapore</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&#10077;</div>
+        <p class="testimonial-text">The predictive analytics module alone paid for the system within the first quarter. We've reduced emergency infrastructure failures by 42% since deployment.</p>
+        <div class="testimonial-name">Marcus Chen</div>
+        <div class="testimonial-role">Chief Technology Officer, Metro Transit Authority</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&#10077;</div>
+        <p class="testimonial-text">In the realm of civic tech, few platforms offer the institutional weight and security standards required by federal agencies. CitySense delivers on both fronts flawlessly.</p>
+        <div class="testimonial-name">Sarah Jenkins</div>
+        <div class="testimonial-role">Head of Infrastructure Security, Dept. of Transportation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 5 — CAPABILITIES
+     ======================================== -->
+<section id="capabilities" class="section-pad">
+  <div class="container">
+    <div class="capabilities-center reveal">
+      <span class="label-tag">CORE CAPABILITIES</span>
+      <h2 class="capabilities-headline">Core Capabilities</h2>
+      <p class="capabilities-sub">Enterprise-grade urban intelligence. Manage, monitor, and optimize your city's infrastructure with unprecedented precision and foresight.</p>
+    </div>
+    <div class="capabilities-grid">
+      <!-- Card 1 -->
+      <div class="capability-card reveal">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3 class="capability-title">Real-time Monitoring</h3>
+        <p class="capability-body">IoT-driven insight across all urban assets. Continuous data flow for immediate operational awareness.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="capability-card reveal" style="transition-delay: 0.1s;">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="capability-title">Predictive Maintenance</h3>
+        <p class="capability-body">AI that forecasts infrastructure failures before they occur, minimizing downtime and repair costs.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="capability-card reveal" style="transition-delay: 0.2s;">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 class="capability-title">Energy Optimization</h3>
+        <p class="capability-body">Smart grid management for carbon-neutral city operations. Dynamically route power where it's needed most.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="capability-card reveal">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="capability-title">Traffic Flux Control</h3>
+        <p class="capability-body">Dynamic routing algorithms to eliminate urban congestion. Real-time adaptation to civic flow patterns.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="capability-card reveal" style="transition-delay: 0.1s;">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <h3 class="capability-title">Water Resource Mgmt</h3>
+        <p class="capability-body">Precision tracking of municipal water flow and quality. Detect leaks instantly and manage distribution networks.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="capability-card reveal" style="transition-delay: 0.2s;">
+        <div class="capability-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="capability-title">Civic Engagement</h3>
+        <p class="capability-body">Digital twin visualization for transparent governance. Bridge the gap between city operators and constituents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 6 — ARCHITECTURE
+     ======================================== -->
+<section id="architecture" class="section-pad">
+  <div class="container">
+    <div class="arch-center reveal">
+      <span class="label-tag">TECHNOLOGY ARCHITECTURE</span>
+      <h2 class="arch-headline">The Intelligence Stack</h2>
+      <p class="arch-sub">Scalable, Secure, Intelligent Smart City Ecosystem</p>
+    </div>
+    <div class="arch-layers">
+      <!-- Layer 4 (top) -->
+      <div class="arch-layer reveal">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">04</span>
+          <span class="arch-layer-label">DASHBOARD &amp; APPLICATIONS</span>
+        </div>
+        <div class="arch-layer-items">Unified Command Center, Citizen App, Urban Planning Tools, Real-time Visualization</div>
+      </div>
+      <!-- Layer 3 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">03</span>
+          <span class="arch-layer-label">AI PROCESSING &amp; ANALYTICS</span>
+        </div>
+        <div class="arch-layer-items">Machine Learning Models, Neural Networks, Deep Learning · Real-time Analysis, Pattern Recognition, Predictive Modeling, Intelligent Automation</div>
+      </div>
+      <!-- Layer 2 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">02</span>
+          <span class="arch-layer-label">DATA LAYER</span>
+        </div>
+        <div class="arch-layer-items">Data Ingestion, Storage, Data Management, Secure &amp; Scalable Infrastructure</div>
+      </div>
+      <!-- Layer 1 (bottom) -->
+      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">01</span>
+          <span class="arch-layer-label">SENSORS &amp; IoT EDGE</span>
+        </div>
+        <div class="arch-layer-items">IoT Devices, Street Cameras, Environmental Sensors, Traffic Monitors, Utility Meters</div>
+      </div>
+    </div>
+    <!-- Architecture diagram -->
+    <div class="arch-diagram reveal">
+      <div class="arch-diagram-label">CitySense Platform Architecture</div>
+      <svg width="100%" height="200" viewBox="0 0 440 200" fill="none">
+        <!-- Layers visual -->
+        <rect x="40" y="10" width="360" height="36" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
+        <text x="220" y="33" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em">APPLICATIONS</text>
+        
+        <rect x="60" y="56" width="320" height="36" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
+        <text x="220" y="79" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.8">AI ENGINE</text>
+        
+        <rect x="80" y="102" width="280" height="36" rx="6" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.12)" stroke-width="1"/>
+        <text x="220" y="125" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.6">DATA LAKE</text>
+        
+        <rect x="100" y="148" width="240" height="36" rx="6" fill="rgba(34,197,94,0.03)" stroke="rgba(34,197,94,0.1)" stroke-width="1"/>
+        <text x="220" y="171" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.4">IoT MESH</text>
+        
+        <!-- Connecting arrows -->
+        <line x1="220" y1="46" x2="220" y2="56" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="92" x2="220" y2="102" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="138" x2="220" y2="148" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        
+        <!-- Side connections -->
+        <circle cx="50" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
+        <circle cx="390" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
+        <line x1="50" y1="28" x2="50" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
+        <line x1="390" y1="28" x2="390" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 7 — PIPELINE
+     ======================================== -->
+<section id="pipeline" class="section-pad">
+  <div class="container">
+    <div class="reveal">
+      <span class="label-tag">PRODUCT PIPELINE</span>
+      <h2 class="pipeline-headline">Product Pipeline</h2>
+      <p class="pipeline-sub">Strategic rollout of urban infrastructure modules.</p>
+    </div>
+    <div class="timeline">
+      <!-- Q1 2024 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q1 2024</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Sensor Mesh Deployment
+              <span class="timeline-badge badge-completed">Completed</span>
+            </div>
+            <div class="timeline-card-body">City-wide installation of IoT particulate and acoustic sensors.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Q2 2024 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q2 2024</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Data Lake Integration
+              <span class="timeline-badge badge-completed">Completed</span>
+            </div>
+            <div class="timeline-card-body">Unified ingestion of disparate municipal data silos.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Q3 2024 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q3 2024</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              AI Predictive Engine
+              <span class="timeline-badge badge-completed">Completed</span>
+            </div>
+            <div class="timeline-card-body">Machine learning models for traffic flow and energy prediction.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Q4 2024 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q4 2024</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Municipal Command Center
+              <span class="timeline-badge badge-progress">In Progress</span>
+            </div>
+            <div class="timeline-card-body">Centralized dashboard for cross-departmental operations.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Q1 2025 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q1 2025</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Citizen Engagement API
+              <span class="timeline-badge badge-upcoming">Upcoming</span>
+            </div>
+            <div class="timeline-card-body">Open data endpoints for public application development.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Q2 2025 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Q2 2025</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Autonomous Utility Grid
+              <span class="timeline-badge badge-upcoming">Upcoming</span>
+            </div>
+            <div class="timeline-card-body">Self-healing smart grid integration for public utilities.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 8 — DMFS
+     ======================================== -->
+<section id="dmfs" class="section-pad">
+  <div class="container">
+    <div class="dmfs-outer reveal">
+      <div class="dmfs-grid">
+        <!-- Left -->
+        <div>
+          <div class="dmfs-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span class="label-tag" style="display: inline-flex; align-items: center; gap: 6px;">ACTIVE DEPLOYMENT <span class="pulse-dot"></span></span>
+          </div>
+          <h2 class="dmfs-headline">Digital Municipal Fiber System (DMFS)</h2>
+          <p class="dmfs-body">A highly resilient, high-capacity fiber optic backbone engineered to interconnect critical municipal infrastructure. The DMFS deployment supports next-generation traffic management, real-time public safety telemetry, and high-density sensor networks across the metropolitan grid.</p>
+          <div class="dmfs-stats">
+            <div class="dmfs-stat">
+              <div class="stat-label">System Uptime</div>
+              <div class="stat-value">99.99%</div>
+            </div>
+            <div class="dmfs-stat">
+              <div class="stat-label">Throughput</div>
+              <div class="stat-value">40Gbps</div>
+            </div>
+            <div class="dmfs-stat">
+              <div class="stat-label">Active Nodes</div>
+              <div class="stat-value">4,512+</div>
+            </div>
+          </div>
+          <div class="dmfs-divider"></div>
+          <a href="#contact" class="btn btn-secondary">Learn More →</a>
+        </div>
+        <!-- Right — Network Map -->
+        <div>
+          <div class="dmfs-visual">
+            <div class="dmfs-visual-header">DMFS: Digital Municipal Fiber System</div>
+            <div class="dmfs-visual-body">
+              <svg width="100%" height="300" viewBox="0 0 400 300" fill="none">
+                <!-- Grid lines -->
+                <g opacity="0.08">
+                  <line x1="0" y1="50" x2="400" y2="50" stroke="#22C55E"/>
+                  <line x1="0" y1="100" x2="400" y2="100" stroke="#22C55E"/>
+                  <line x1="0" y1="150" x2="400" y2="150" stroke="#22C55E"/>
+                  <line x1="0" y1="200" x2="400" y2="200" stroke="#22C55E"/>
+                  <line x1="0" y1="250" x2="400" y2="250" stroke="#22C55E"/>
+                  <line x1="50" y1="0" x2="50" y2="300" stroke="#22C55E"/>
+                  <line x1="100" y1="0" x2="100" y2="300" stroke="#22C55E"/>
+                  <line x1="150" y1="0" x2="150" y2="300" stroke="#22C55E"/>
+                  <line x1="200" y1="0" x2="200" y2="300" stroke="#22C55E"/>
+                  <line x1="250" y1="0" x2="250" y2="300" stroke="#22C55E"/>
+                  <line x1="300" y1="0" x2="300" y2="300" stroke="#22C55E"/>
+                  <line x1="350" y1="0" x2="350" y2="300" stroke="#22C55E"/>
+                </g>
+                <!-- Connection lines (fiber paths) -->
+                <g>
+                  <line x1="80" y1="60" x2="200" y2="80" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
+                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="200" y1="80" x2="320" y2="55" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
+                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="200" y1="80" x2="200" y2="150" stroke="#22C55E" stroke-width="2" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="200" y1="150" x2="100" y2="180" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
+                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.8s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="200" y1="150" x2="310" y2="170" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
+                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3.2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="100" y1="180" x2="60" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
+                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="2.5s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="100" y1="180" x2="180" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
+                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="310" y1="170" x2="350" y2="230" stroke="#22C55E" stroke-width="1" opacity="0.3">
+                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="2.7s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="310" y1="170" x2="260" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
+                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3.3s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="80" y1="60" x2="60" y2="240" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.15"/>
+                  <line x1="320" y1="55" x2="350" y2="230" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.15"/>
+                </g>
+                <!-- Hub node (center) -->
+                <circle cx="200" cy="150" r="10" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="2">
+                  <animate attributeName="r" values="10;13;10" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="200" cy="150" r="4" fill="#22C55E"/>
+                <!-- Major nodes -->
+                <circle cx="80" cy="60" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="80" cy="60" r="3" fill="#22C55E"/>
+                <circle cx="200" cy="80" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="200" cy="80" r="3" fill="#22C55E"/>
+                <circle cx="320" cy="55" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="320" cy="55" r="3" fill="#22C55E"/>
+                <circle cx="100" cy="180" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="100" cy="180" r="3" fill="#22C55E"/>
+                <circle cx="310" cy="170" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
+                <circle cx="310" cy="170" r="3" fill="#22C55E"/>
+                <!-- Edge nodes -->
+                <circle cx="60" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
+                <circle cx="180" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
+                <circle cx="260" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
+                <circle cx="350" cy="230" r="4" fill="#22C55E" opacity="0.5"/>
+                <!-- Data flow particles -->
+                <circle r="2" fill="#22C55E">
+                  <animateMotion dur="3s" repeatCount="indefinite" path="M80,60 L200,80 L320,55"/>
+                </circle>
+                <circle r="2" fill="#22C55E">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" path="M200,80 L200,150 L310,170"/>
+                </circle>
+                <circle r="2" fill="#22C55E">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M100,180 L200,150 L310,170 L350,230"/>
+                </circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 9 — RESEARCH
+     ======================================== -->
+<section id="research" class="section-pad">
+  <div class="container">
+    <div class="reveal">
+      <span class="label-tag">RESEARCH &amp; INNOVATION</span>
+      <h2 class="research-headline">Pioneering Urban Science</h2>
+      <p class="research-sub">Data-driven insights shaping the future of municipal infrastructure and citizen services.</p>
+      <div class="research-divider"></div>
+    </div>
+    <div class="research-grid">
+      <!-- Card 1 -->
+      <div class="research-card reveal">
+        <div class="research-card-img">
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+            <rect x="10" y="45" width="12" height="30" rx="2" fill="rgba(34,197,94,0.15)"/>
+            <rect x="28" y="30" width="12" height="45" rx="2" fill="rgba(34,197,94,0.25)"/>
+            <rect x="46" y="35" width="12" height="40" rx="2" fill="rgba(34,197,94,0.2)"/>
+            <rect x="64" y="20" width="12" height="55" rx="2" fill="rgba(34,197,94,0.35)"/>
+            <rect x="82" y="15" width="12" height="60" rx="2" fill="rgba(34,197,94,0.45)"/>
+            <rect x="100" y="10" width="12" height="65" rx="2" fill="#22C55E" opacity="0.5"/>
+            <polyline points="16,44 34,29 52,34 70,19 88,14 106,9" stroke="#22C55E" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="research-card-content">
+          <span class="research-tag">White Paper</span>
+          <h3 class="research-card-title">Predictive Maintenance in Grid Ecosystems</h3>
+          <p class="research-card-body">An analysis of sensor-driven anomaly detection models reducing catastrophic municipal power failures by 42%.</p>
+          <a href="#" class="research-card-link">READ MORE →</a>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="research-card reveal" style="transition-delay: 0.1s;">
+        <div class="research-card-img">
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+            <circle cx="30" cy="40" r="8" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="60" cy="25" r="6" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="90" cy="45" r="10" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="55" cy="55" r="5" fill="none" stroke="#22C55E" stroke-width="1" opacity="0.4"/>
+            <line x1="30" y1="40" x2="60" y2="25" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+            <line x1="60" y1="25" x2="90" y2="45" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+            <line x1="30" y1="40" x2="55" y2="55" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+            <line x1="55" y1="55" x2="90" y2="45" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+            <circle cx="30" cy="40" r="3" fill="#22C55E" opacity="0.6"/>
+            <circle cx="60" cy="25" r="3" fill="#22C55E" opacity="0.6"/>
+            <circle cx="90" cy="45" r="3" fill="#22C55E" opacity="0.6"/>
+            <circle cx="55" cy="55" r="2" fill="#22C55E" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="research-card-content">
+          <span class="research-tag">Case Study</span>
+          <h3 class="research-card-title">Dynamic Transit Routing Protocols</h3>
+          <p class="research-card-body">Evaluating the impact of real-time multi-agent routing algorithms on public transit efficiency during peak congestion periods.</p>
+          <a href="#" class="research-card-link">READ MORE →</a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="research-card reveal" style="transition-delay: 0.2s;">
+        <div class="research-card-img">
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
+            <path d="M10 70 Q30 30 60 50 Q90 70 110 20" stroke="#22C55E" stroke-width="2" fill="none" opacity="0.5"/>
+            <path d="M10 70 Q30 40 60 55 Q90 70 110 30" stroke="rgba(34,197,94,0.3)" stroke-width="1" fill="none"/>
+            <circle cx="35" cy="40" r="4" fill="rgba(34,197,94,0.3)"/>
+            <circle cx="60" cy="50" r="4" fill="rgba(34,197,94,0.4)"/>
+            <circle cx="85" cy="42" r="4" fill="rgba(34,197,94,0.5)"/>
+            <circle cx="110" cy="20" r="4" fill="#22C55E" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="research-card-content">
+          <span class="research-tag">Research Brief</span>
+          <h3 class="research-card-title">Micro-Climate Zoning Impacts</h3>
+          <p class="research-card-body">Quantifying the thermal mitigation effects of strategic green-roof deployment across dense commercial sectors.</p>
+          <a href="#" class="research-card-link">READ MORE →</a>
+        </div>
+      </div>
+    </div>
+    <div class="research-cta reveal">
+      <a href="#" class="btn btn-secondary">View Full Archive</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 10 — PARTNERSHIPS
+     ======================================== -->
+<section id="partnerships" class="section-pad">
+  <div class="container">
+    <div class="partnerships-center reveal">
+      <span class="label-tag">PARTNERSHIP OPPORTUNITIES</span>
+      <h2 class="partnerships-headline">Scale with CitySense</h2>
+    </div>
+    <div class="partnerships-grid">
+      <!-- Strategic -->
+      <div class="partnership-card reveal">
+        <div class="partnership-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <h3 class="partnership-tier">Strategic</h3>
+        <ul class="partnership-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Co-marketing initiatives
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Dedicated success manager
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority roadmap input
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Revenue sharing model
+          </li>
+        </ul>
+      </div>
+      <!-- Technical -->
+      <div class="partnership-card reveal" style="transition-delay: 0.1s;">
+        <div class="partnership-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="partnership-tier">Technical</h3>
+        <ul class="partnership-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Full API access &amp; sandboxes
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Direct engineering support
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            White-label integration options
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Custom data pipelines
+          </li>
+        </ul>
+      </div>
+      <!-- Municipal -->
+      <div class="partnership-card reveal" style="transition-delay: 0.2s;">
+        <div class="partnership-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01"/><path d="M9 13h.01"/><path d="M9 17h.01"/></svg>
+        </div>
+        <h3 class="partnership-tier">Municipal</h3>
+        <ul class="partnership-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Civic data pooling
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Cross-agency collaboration tools
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Grant application assistance
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Public transparency portals
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="partnerships-cta reveal">
+      <a href="#contact" class="btn btn-primary">INQUIRE ABOUT PARTNERSHIPS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 11 — TEAM
+     ======================================== -->
+<section id="team" class="section-pad">
+  <div class="container">
+    <div class="team-center reveal">
+      <span class="label-tag">OUR TEAM</span>
+      <h2 class="team-headline">The Minds Behind the City</h2>
+      <p class="team-sub">Our multidisciplinary team of urban planners, data scientists, and engineers dedicated to building smarter, more resilient civic infrastructure.</p>
+    </div>
+    <div class="team-grid">
+      <!-- Member 1 -->
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">Dr. Elena Rostova</div>
+        <div class="team-role">Chief Data Scientist</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+      <!-- Member 2 -->
+      <div class="team-card reveal" style="transition-delay: 0.1s;">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">Marcus Chen</div>
+        <div class="team-role">Head of Urban Policy</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+      <!-- Member 3 -->
+      <div class="team-card reveal" style="transition-delay: 0.2s;">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">Sarah Jenkins</div>
+        <div class="team-role">Lead Systems Architect</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+      <!-- Member 4 -->
+      <div class="team-card reveal">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">David Al-Fayed</div>
+        <div class="team-role">VP of Product</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+      <!-- Member 5 -->
+      <div class="team-card reveal" style="transition-delay: 0.1s;">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">Emily Wu</div>
+        <div class="team-role">Director of Operations</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+      <!-- Member 6 -->
+      <div class="team-card reveal" style="transition-delay: 0.2s;">
+        <div class="team-avatar">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="team-name">James Thorne</div>
+        <div class="team-role">Principal Designer</div>
+        <div class="team-social">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 12 — CONTACT / FOOTER
+     ======================================== -->
+<section id="contact">
+  <!-- Subtle city grid top -->
+  <div class="contact-top">
+    <svg width="100%" height="120" viewBox="0 0 1200 120" fill="none" preserveAspectRatio="none" style="position:absolute; top:0; left:0; width:100%; height:100%;">
+      <g opacity="0.04">
+        <line x1="0" y1="20" x2="1200" y2="20" stroke="#22C55E"/>
+        <line x1="0" y1="40" x2="1200" y2="40" stroke="#22C55E"/>
+        <line x1="0" y1="60" x2="1200" y2="60" stroke="#22C55E"/>
+        <line x1="0" y1="80" x2="1200" y2="80" stroke="#22C55E"/>
+        <line x1="0" y1="100" x2="1200" y2="100" stroke="#22C55E"/>
+        <line x1="100" y1="0" x2="100" y2="120" stroke="#22C55E"/>
+        <line x1="200" y1="0" x2="200" y2="120" stroke="#22C55E"/>
+        <line x1="300" y1="0" x2="300" y2="120" stroke="#22C55E"/>
+        <line x1="400" y1="0" x2="400" y2="120" stroke="#22C55E"/>
+        <line x1="500" y1="0" x2="500" y2="120" stroke="#22C55E"/>
+        <line x1="600" y1="0" x2="600" y2="120" stroke="#22C55E"/>
+        <line x1="700" y1="0" x2="700" y2="120" stroke="#22C55E"/>
+        <line x1="800" y1="0" x2="800" y2="120" stroke="#22C55E"/>
+        <line x1="900" y1="0" x2="900" y2="120" stroke="#22C55E"/>
+        <line x1="1000" y1="0" x2="1000" y2="120" stroke="#22C55E"/>
+        <line x1="1100" y1="0" x2="1100" y2="120" stroke="#22C55E"/>
+      </g>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid reveal">
+        <!-- Left — Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">CitySense</div>
+          <p class="footer-tagline">Operational Intelligence for Global Governance. Real-time data synthesis for resilient urban ecosystems.</p>
+          <div class="footer-brand-icons">
+            <a href="#" aria-label="Website">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Center — Legal -->
+        <div>
+          <div class="footer-legal-label">Legal &amp; Support</div>
+          <ul class="footer-legal-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Contact Support</a></li>
+          </ul>
+        </div>
+        <!-- Right — Form -->
+        <div>
+          <div class="footer-form-card">
+            <div class="footer-form-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span class="title">DIRECT INQUIRY</span>
+            </div>
+            <form onsubmit="event.preventDefault();">
+              <div class="form-row">
+                <input type="text" class="form-input" placeholder="Name / Designation" id="contactName">
+                <input type="email" class="form-input" placeholder="Official Email" id="contactEmail">
+              </div>
+              <div class="form-row full">
+                <textarea class="form-input" placeholder="Message Core" rows="4" id="contactMessage"></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary">Transmit →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom strip -->
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2024 CitySense Infrastructure. All rights reserved.</div>
+        <div class="footer-status">
+          <span class="pulse-dot"></span>
+          SYSTEM STATUS: NOMINAL
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Mobile menu toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Close mobile menu on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// IntersectionObserver for fade-in-up animations
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Navbar background opacity on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.borderBottomColor = 'rgba(255,255,255,0.12)';
+  } else {
+    navbar.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+  }
+});
+</script>
+
+</body>
+</html>

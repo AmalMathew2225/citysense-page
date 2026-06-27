@@ -2704,6 +2704,53 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 </section>
 
 <!-- ========================================
+     SECTION 6 — ARCHITECTURE
+     ======================================== -->
+<section id="architecture" class="section-pad">
+  <div class="container">
+    <div class="arch-center reveal">
+      <span class="label-tag">TELEMETRY PIPELINE</span>
+      <h2 class="arch-headline">The Intelligence Stack</h2>
+      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
+    </div>
+    <div class="arch-layers">
+      <!-- Layer 4 (top) -->
+      <div class="arch-layer reveal">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">04</span>
+          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
+        </div>
+        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
+      </div>
+      <!-- Layer 3 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">03</span>
+          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
+        </div>
+        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
+      </div>
+      <!-- Layer 2 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">02</span>
+          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
+        </div>
+        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
+      </div>
+      <!-- Layer 1 (bottom) -->
+      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">01</span>
+          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
+        </div>
+        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
      SECTION 4 — RECOGNITION
      ======================================== -->
 <section id="recognition" class="section-pad">
@@ -2783,82 +2830,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           Collaboration: <em>CitySense is currently developing and enhancing this drainage monitoring and flood alert solution in collaboration with the original patent holders, with a focus on improving scalability, deployment readiness, and urban impact.</em>
         </span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================
-     SECTION 6 — ARCHITECTURE
-     ======================================== -->
-<section id="architecture" class="section-pad">
-  <div class="container">
-    <div class="arch-center reveal">
-      <span class="label-tag">TELEMETRY PIPELINE</span>
-      <h2 class="arch-headline">The Intelligence Stack</h2>
-      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
-    </div>
-    <div class="arch-layers">
-      <!-- Layer 4 (top) -->
-      <div class="arch-layer reveal">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">04</span>
-          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
-        </div>
-        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
-      </div>
-      <!-- Layer 3 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">03</span>
-          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
-        </div>
-        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
-      </div>
-      <!-- Layer 2 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">02</span>
-          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
-        </div>
-        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
-      </div>
-      <!-- Layer 1 (bottom) -->
-      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">01</span>
-          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
-        </div>
-        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
-      </div>
-    </div>
-    <!-- Architecture diagram -->
-    <div class="arch-diagram reveal">
-      <div class="arch-diagram-label">City Sense DMFS Platform Architecture</div>
-      <svg width="100%" height="200" viewBox="0 0 440 200" fill="none">
-        <!-- Layers visual -->
-        <rect x="40" y="10" width="360" height="36" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
-        <text x="220" y="33" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em">APPLICATIONS</text>
-        
-        <rect x="60" y="56" width="320" height="36" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
-        <text x="220" y="79" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.8">AI ENGINE</text>
-        
-        <rect x="80" y="102" width="280" height="36" rx="6" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.12)" stroke-width="1"/>
-        <text x="220" y="125" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.6">DATA LAKE</text>
-        
-        <rect x="100" y="148" width="240" height="36" rx="6" fill="rgba(34,197,94,0.03)" stroke="rgba(34,197,94,0.1)" stroke-width="1"/>
-        <text x="220" y="171" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.4">IoT MESH</text>
-        
-        <!-- Connecting arrows -->
-        <line x1="220" y1="46" x2="220" y2="56" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        <line x1="220" y1="92" x2="220" y2="102" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        <line x1="220" y1="138" x2="220" y2="148" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        
-        <!-- Side connections -->
-        <circle cx="50" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
-        <circle cx="390" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
-        <line x1="50" y1="28" x2="50" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
-        <line x1="390" y1="28" x2="390" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
-      </svg>
     </div>
   </div>
 </section>

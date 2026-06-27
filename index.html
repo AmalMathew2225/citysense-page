@@ -57,6 +57,19 @@ body {
 }
 .section-pad { padding: var(--section-pad) 0; }
 h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: var(--text-primary); }
+.hero-title,
+.about-headline,
+.why-headline,
+.capabilities-headline,
+.recognition-headline,
+.arch-headline,
+.pipeline-headline,
+.research-headline,
+.partnerships-headline,
+.team-headline,
+.contact-headline {
+  font-family: var(--font-heading);
+}
 
 /* ===== BUTTONS ===== */
 .btn {
@@ -2397,7 +2410,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
         </div>
         <h3 class="capability-title">Real-Time Alert Engine</h3>
-        <p class="capability-body">Rising water level combined with declining flow triggers instant blockage confirmation with GPS-tagged coordinates sent to municipal authorities.</p>
+        <p class="capability-body">Triggers a dual-tiered alert pipeline: direct telemetry dashboards inform municipal engineers, while automated localized warnings alert residents and motorists of imminent flood risk.</p>
       </div>
       <!-- Card 6 -->
       <div class="capability-card reveal" style="transition-delay: 0.2s;">
@@ -2425,7 +2438,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
             <span class="label-tag">Flagship Production System</span>
           </div>
           <h2 class="dmfs-headline">Drainage Monitoring &amp; Flood Alert System (DMFS)</h2>
-          <p class="dmfs-body">A distributed IoT framework engineered to monitor the city's drainage network from the inside out. Deployed at critical choke points, DMFS continuously computes infrastructure flow metrics and level readings before surface waterlogging can materialize.</p>
+          <p class="dmfs-body">A distributed IoT framework engineered to monitor the city's drainage network from the inside out. Designed for localized node mesh integration, DMFS computes infrastructure flow metrics and level readings in real time to capture blockages before surface waterlogging can materialize.</p>
           <div class="dmfs-stats">
             <div class="dmfs-stat">
               <div class="stat-label">Hardware Nodes</div>
@@ -2781,9 +2794,9 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <div class="award-badge">
         <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
         </div>
-        <div class="award-name">Deployed in Kochi</div>
+        <div class="award-name">Lab-Tested &amp; Simulated</div>
       </div>
     </div>
     <div class="validation-grid reveal">
@@ -2855,7 +2868,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
               Drainage Monitoring (DMFS)
               <span class="timeline-badge badge-completed">Completed</span>
             </div>
-            <div class="timeline-card-body">Patented real-time flood risk telemetry inside urban drainage corridors. Integrated edge processing with automated warning alerts. Currently field-testing in Kochi.</div>
+            <div class="timeline-card-body">Patented real-time flood risk telemetry inside urban drainage corridors. Integrated edge processing with automated warning alerts. Currently lab-tested and simulated at CITTIC, CUSAT, with proposals submitted to CSML for field pilots.</div>
           </div>
         </div>
       </div>
@@ -3240,6 +3253,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                 <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Transmit Engagement Parameters →</button>
               </div>
             </form>
+            <div id="formSuccessMessage" style="display:none; text-align:center; padding: 24px 10px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 12px;"><circle cx="12" cy="12" r="10"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--text-primary); margin-bottom: 8px;">Enquiry Compiled Successfully!</h4>
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 280px; margin: 0 auto 20px;">We opened your email client to send this message to <strong>contact@citysense.in</strong>. Please verify and send the pre-filled mail.</p>
+              <button type="button" class="btn btn-secondary" id="resetFormBtn" style="padding: 6px 16px; font-size: 12px;">Send New Request</button>
+            </div>
           </div>
         </div>
       </div>
@@ -3299,6 +3318,9 @@ window.addEventListener('scroll', () => {
 
 // Contact form submission logic via mailto
 const engagementForm = document.getElementById('engagementForm');
+const formSuccessMessage = document.getElementById('formSuccessMessage');
+const resetFormBtn = document.getElementById('resetFormBtn');
+
 if (engagementForm) {
   engagementForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -3311,6 +3333,20 @@ if (engagementForm) {
     const subject = encodeURIComponent(`Enquiry from ${name} (${org})`);
     const body = encodeURIComponent(`Stakeholder Segment: ${partnerType}\nName: ${name}\nOrganisation: ${org}\nEmail: ${email}\n\n${message}`);
     window.location.href = `mailto:contact@citysense.in?subject=${subject}&body=${body}`;
+    
+    // Toggle success UI states
+    engagementForm.style.display = 'none';
+    if (formSuccessMessage) {
+      formSuccessMessage.style.display = 'block';
+    }
+  });
+}
+
+if (resetFormBtn && engagementForm && formSuccessMessage) {
+  resetFormBtn.addEventListener('click', () => {
+    engagementForm.reset();
+    formSuccessMessage.style.display = 'none';
+    engagementForm.style.display = 'block';
   });
 }
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CitySense — The Operating System for Modern Governance</title>
-<meta name="description" content="Real-time urban infrastructure monitoring powered by AI and IoT. Data-driven precision for the leaders of tomorrow. CitySense is the definitive operating system for modern metropolises.">
+<title>City Sense — IoT-Driven Urban Intelligence & Infrastructure Resilience</title>
+<meta name="description" content="City Sense builds intelligent, distributed IoT frameworks for real-time urban drainage monitoring and flood alert systems. Incubated at CITTIC CUSAT, Kochi. Patent No. 565002.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -879,7 +879,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .partnerships-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -941,7 +941,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 .team-card {
@@ -975,11 +975,21 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   margin-bottom: 16px;
 }
 .team-social {
-  opacity: 0.3;
-  transition: opacity 0.3s;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
-.team-card:hover .team-social { opacity: 0.6; }
+.team-social a {
+  opacity: 0.3;
+  transition: opacity 0.3s, color 0.3s;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.team-card:hover .team-social a { opacity: 0.6; }
+.team-social a:hover { opacity: 1 !important; color: var(--accent); }
 
 /* ========================================
    SECTION 12 — CONTACT / FOOTER
@@ -1116,6 +1126,68 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   letter-spacing: 0.06em;
 }
 
+/* ===== TEAM MENTORS ===== */
+.team-mentors {
+  margin-top: 48px;
+  text-align: center;
+}
+.team-mentors-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.mentors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.mentor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.mentor-card:hover { border-color: rgba(34,197,94,0.2); }
+.mentor-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.mentor-dept {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Stakeholder select */
+.form-select {
+  flex: 1;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+}
+.form-select option { background: var(--bg-card); color: var(--text-primary); }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .hero-grid, .about-grid, .dmfs-grid { grid-template-columns: 1fr; }
@@ -1186,15 +1258,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <div class="container" style="max-width: var(--max-width);">
-    <a href="#hero" class="navbar-logo">CitySense</a>
+    <a href="#hero" class="navbar-logo">City Sense</a>
     <div class="navbar-links" id="navLinks">
       <a href="#about">About</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#pipeline">Pipeline</a>
-      <a href="#research">Research</a>
+      <a href="#why">The Problem</a>
+      <a href="#capabilities">DMFS</a>
+      <a href="#architecture">Tech Stack</a>
+      <a href="#recognition">Credentials</a>
       <a href="#team">Team</a>
-      <a href="#contact" class="btn btn-primary navbar-cta">Contact Us</a>
+      <a href="#contact" class="btn btn-primary navbar-cta">Partner With Us</a>
     </div>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -1212,29 +1284,29 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="reveal">
         <div class="hero-label">
           <span class="pulse-dot"></span>
-          <span class="label-tag">SYSTEM ONLINE</span>
+          <span class="label-tag">INCUBATED AT CITTIC, CUSAT</span>
         </div>
         <h1 class="hero-title">
-          The Operating System for<br>
-          <span class="green">Modern Governance.</span>
+          Engineering<br>
+          <span class="green">Resilient Cities.</span>
         </h1>
-        <p class="hero-sub">Real-time urban infrastructure monitoring powered by AI and IoT. Data-driven precision for the leaders of tomorrow.</p>
+        <p class="hero-sub">City Sense builds intelligent, distributed IoT frameworks designed to bring comprehensive operational visibility to hidden urban drainage networks, safeguarding critical infrastructure against dynamic climate risks.</p>
         <div class="hero-buttons">
-          <a href="#contact" class="btn btn-primary">Request Demo →</a>
-          <a href="#architecture" class="btn btn-secondary">View Architecture</a>
+          <a href="#contact" class="btn btn-primary">Initiate Pilot Agreement →</a>
+          <a href="#capabilities" class="btn btn-secondary">Explore DMFS</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="hero-stat-value">2.4M</div>
-            <div class="hero-stat-label">Sensors Active</div>
+            <div class="hero-stat-value">565002</div>
+            <div class="hero-stat-label">Patent No.</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value">&lt;10ms</div>
-            <div class="hero-stat-label">Data Latency</div>
+            <div class="hero-stat-value">CITTIC</div>
+            <div class="hero-stat-label">Incubated at CUSAT</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value">99.9%</div>
-            <div class="hero-stat-label">Uptime</div>
+            <div class="hero-stat-value">Dec '25</div>
+            <div class="hero-stat-label">Established</div>
           </div>
         </div>
       </div>
@@ -1242,7 +1314,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="reveal" style="transition-delay: 0.2s;">
         <div class="hero-dashboard">
           <div class="dashboard-main">
-            <div class="dashboard-main-header">Grid Integrity</div>
+            <div class="dashboard-main-header">Drainage Flow Monitoring</div>
             <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart">
               <defs>
                 <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
@@ -1274,15 +1346,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           </div>
           <div class="dashboard-sub-grid">
             <div class="dashboard-sub-card">
-              <div class="card-label">Traffic Flux</div>
+              <div class="card-label">Water Level</div>
               <svg width="100%" height="48" viewBox="0 0 180 48" fill="none">
                 <path d="M0 40 C30 35, 50 20, 80 25 C110 30, 130 15, 180 10" stroke="#22C55E" stroke-width="1.5" fill="none" opacity="0.5"/>
                 <circle cx="80" cy="25" r="3" fill="#22C55E"/>
               </svg>
-              <div class="card-value">84 <span class="unit">idx</span></div>
+              <div class="card-value">42 <span class="unit">cm</span></div>
             </div>
             <div class="dashboard-sub-card">
-              <div class="card-label">Power Load</div>
+              <div class="card-label">Flow Rate</div>
               <svg width="100%" height="48" viewBox="0 0 180 48" fill="none">
                 <rect x="10" y="30" width="16" height="18" rx="2" fill="rgba(34,197,94,0.15)"/>
                 <rect x="34" y="22" width="16" height="26" rx="2" fill="rgba(34,197,94,0.2)"/>
@@ -1291,7 +1363,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                 <rect x="106" y="8" width="16" height="40" rx="2" fill="rgba(34,197,94,0.5)"/>
                 <rect x="130" y="12" width="16" height="36" rx="2" fill="#22C55E" opacity="0.6"/>
               </svg>
-              <div class="card-value">62<span class="unit">%</span></div>
+              <div class="card-value">1.8<span class="unit">m/s</span></div>
             </div>
           </div>
         </div>
@@ -1308,28 +1380,28 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     <div class="about-grid">
       <!-- Left -->
       <div class="reveal">
-        <span class="label-tag">ABOUT CITYSENSE</span>
-        <h2 class="about-headline">Intelligence for the<br>Urban Frontier.</h2>
+        <span class="label-tag">ABOUT CITY SENSE</span>
+        <h2 class="about-headline">Academic Rigour.<br>Commercial Agility.</h2>
         <div class="about-accent-bar"></div>
-        <p class="about-text">CitySense is the definitive operating system for modern metropolises. We bridge the gap between physical infrastructure and digital intelligence, empowering civic leaders with unprecedented control and visibility.</p>
-        <p class="about-text">By synthesizing complex, real-time data streams — from critical infrastructure health to dynamic traffic flows and localized energy distribution — our platform transforms municipal operations from reactive management into predictive governance.</p>
+        <p class="about-text">City Sense is a registered startup incubated at the <strong>Centre for Innovation, Technology Transfer and Industrial Collaboration (CITTIC)</strong>, CUSAT, Kochi. We develop and enhance drainage monitoring and flood alert solutions in collaboration with the original patent holders, focusing on scalability, deployment readiness, and urban impact.</p>
+        <p class="about-text">We work in close collaboration with academic advisors and environmental engineering mentors, translating research achievements in fluid velocity sensing and urban data streaming into scalable municipal services for resilient cities.</p>
         <div class="about-pills">
           <div class="about-pill">
             <div class="about-pill-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
             </div>
             <div class="about-pill-text">
-              <div class="pill-title">REAL-TIME SYNC</div>
-              <div class="pill-sub">Lat: &lt; 50ms</div>
+              <div class="pill-title">CITTIC, CUSAT</div>
+              <div class="pill-sub">Incubated Startup</div>
             </div>
           </div>
           <div class="about-pill">
             <div class="about-pill-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
             <div class="about-pill-text">
-              <div class="pill-title">DATA SECURITY</div>
-              <div class="pill-sub">Gov-Grade E2EE</div>
+              <div class="pill-title">REGISTERED FIRM</div>
+              <div class="pill-sub">Est. Dec 2025</div>
             </div>
           </div>
         </div>
@@ -1340,7 +1412,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           <div class="about-visual-header">
             <div class="title">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-              URBAN DATA MESH
+              DMFS TELEMETRY NETWORK
             </div>
             <div class="dots"><span></span><span></span><span></span></div>
           </div>
@@ -1471,24 +1543,24 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <section id="why" class="section-pad">
   <div class="container">
     <div class="why-center reveal">
-      <span class="label-tag">THE PROBLEM</span>
-      <h2 class="why-headline">Why Cities Need Smarter Infrastructure</h2>
+      <span class="label-tag">THE SYSTEMIC PROBLEM</span>
+      <h2 class="why-headline">Drainage Fails Silently — Cities Respond Too Late</h2>
     </div>
     <div class="why-stats reveal">
       <div class="why-stat-card">
-        <div class="stat-value">68%</div>
-        <div class="stat-label">of urban infrastructure is over 30 years old</div>
+        <div class="stat-value">80%</div>
+        <div class="stat-label">of urban floods in Indian cities are drainage-centric, not river overflow</div>
       </div>
       <div class="why-stat-card">
-        <div class="stat-value">$3.9T</div>
-        <div class="stat-label">annual global cost of inefficient city operations</div>
+        <div class="stat-value">2018</div>
+        <div class="stat-label">Kerala Floods — Kochi's drainage failure cited as a primary amplifier</div>
       </div>
       <div class="why-stat-card">
-        <div class="stat-value">2.5B</div>
-        <div class="stat-label">more people will live in cities by 2050</div>
+        <div class="stat-value">20min</div>
+        <div class="stat-label">A drainage blockage can cause severe waterlogging within 20–30 minutes</div>
       </div>
     </div>
-    <p class="why-body reveal">Legacy systems built for yesterday's cities cannot handle tomorrow's demands. CitySense provides the intelligence layer that transforms aging infrastructure into responsive, predictive urban ecosystems.</p>
+    <p class="why-body reveal">Municipal drainage monitoring relies on manual inspection and citizen complaints. By the time a blockage is reported, flooding has already begun. No city in Kerala has a real-time, distributed, automated drainage monitoring system. That is what City Sense is building.</p>
   </div>
 </section>
 
@@ -1498,54 +1570,54 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <section id="recognition" class="section-pad">
   <div class="container">
     <div class="recognition-center reveal">
-      <span class="label-tag">RECOGNITION &amp; VALIDATION</span>
-      <h2 class="recognition-headline">Validated by Industry Leaders</h2>
-      <p class="recognition-sub">Trusted by major municipalities and recognized globally for advancing urban infrastructure management.</p>
+      <span class="label-tag">INSTITUTIONAL VALIDATION</span>
+      <h2 class="recognition-headline">Vetted &amp; Backed by National Frameworks</h2>
+      <p class="recognition-sub">Built with rigour. Recognised by institutions. Validated by government infrastructure frameworks.</p>
     </div>
     <div class="award-strip reveal">
       <div class="award-badge">
         <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
-        <div class="award-name">Urban Innovation Award</div>
+        <div class="award-name">Patent No. 565002</div>
       </div>
       <div class="award-badge">
         <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
-        <div class="award-name">Smart City Alliance</div>
+        <div class="award-name">₹1 Lakh RUSA Grant</div>
       </div>
       <div class="award-badge">
         <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
         </div>
-        <div class="award-name">Infrastructure Excellence</div>
+        <div class="award-name">CITTIC Incubated</div>
       </div>
       <div class="award-badge">
         <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <div class="award-name">Global Governance Forum</div>
+        <div class="award-name">Deployed in Kochi</div>
       </div>
     </div>
     <div class="testimonials reveal">
       <div class="testimonial-card">
         <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">CitySense has fundamentally transformed our approach to preventative maintenance. The level of granular data visibility across our grid is unprecedented, allowing us to allocate resources with surgical precision.</p>
-        <div class="testimonial-name">Dr. Elena Rostova</div>
-        <div class="testimonial-role">Director of Urban Planning, Singapore</div>
+        <p class="testimonial-text">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
+        <div class="testimonial-name">Contextual Case Study</div>
+        <div class="testimonial-role">2018 Kerala Floods — Kochi Urban Drainage Failure</div>
       </div>
       <div class="testimonial-card">
         <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">The predictive analytics module alone paid for the system within the first quarter. We've reduced emergency infrastructure failures by 42% since deployment.</p>
-        <div class="testimonial-name">Marcus Chen</div>
-        <div class="testimonial-role">Chief Technology Officer, Metro Transit Authority</div>
+        <p class="testimonial-text">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
+        <div class="testimonial-name">Patent Collaboration</div>
+        <div class="testimonial-role">Granted April 2025 — CUSAT Researchers</div>
       </div>
       <div class="testimonial-card">
         <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">In the realm of civic tech, few platforms offer the institutional weight and security standards required by federal agencies. CitySense delivers on both fronts flawlessly.</p>
-        <div class="testimonial-name">Sarah Jenkins</div>
-        <div class="testimonial-role">Head of Infrastructure Security, Dept. of Transportation</div>
+        <p class="testimonial-text">Formally backed under the Rashtriya Uchchatar Shiksha Abhiyan (RUSA) framework, Ministry of Education, Government of India, for specialized edge prototype operationalization and field deployment.</p>
+        <div class="testimonial-name">RUSA Grant Sanctioned</div>
+        <div class="testimonial-role">Ministry of Education, Government of India</div>
       </div>
     </div>
   </div>
@@ -1557,9 +1629,9 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <section id="capabilities" class="section-pad">
   <div class="container">
     <div class="capabilities-center reveal">
-      <span class="label-tag">CORE CAPABILITIES</span>
-      <h2 class="capabilities-headline">Core Capabilities</h2>
-      <p class="capabilities-sub">Enterprise-grade urban intelligence. Manage, monitor, and optimize your city's infrastructure with unprecedented precision and foresight.</p>
+      <span class="label-tag">FLAGSHIP SOLUTION</span>
+      <h2 class="capabilities-headline">The DMFS Architecture</h2>
+      <p class="capabilities-sub">A distributed IoT framework developed in collaboration with the original patent holders to detect flood risk inside urban drainage corridors — before water ever reaches the street.</p>
     </div>
     <div class="capabilities-grid">
       <!-- Card 1 -->
@@ -1567,48 +1639,48 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
-        <h3 class="capability-title">Real-time Monitoring</h3>
-        <p class="capability-body">IoT-driven insight across all urban assets. Continuous data flow for immediate operational awareness.</p>
+        <h3 class="capability-title">Rugged In-Situ Nodes</h3>
+        <p class="capability-body">Custom IP67/IP68 waterproof, corrosion-resistant enclosures engineered for harsh underground drainage conduits and continuous submerged operation.</p>
       </div>
       <!-- Card 2 -->
       <div class="capability-card reveal" style="transition-delay: 0.1s;">
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
-        <h3 class="capability-title">Predictive Maintenance</h3>
-        <p class="capability-body">AI that forecasts infrastructure failures before they occur, minimizing downtime and repair costs.</p>
+        <h3 class="capability-title">Adaptive Mounting</h3>
+        <p class="capability-body">Non-invasive mechanical integration optimized for instant installation within U-drain, V-drain, or closed box-drain channel cross-sections.</p>
       </div>
       <!-- Card 3 -->
       <div class="capability-card reveal" style="transition-delay: 0.2s;">
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3 class="capability-title">Energy Optimization</h3>
-        <p class="capability-body">Smart grid management for carbon-neutral city operations. Dynamically route power where it's needed most.</p>
+        <h3 class="capability-title">Power Autonomy</h3>
+        <p class="capability-body">Ultra-low power configurations delivering 1–2 year maintenance-free battery lifecycle with future integrated GPS node-positioning updates.</p>
       </div>
       <!-- Card 4 -->
       <div class="capability-card reveal">
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
-        <h3 class="capability-title">Traffic Flux Control</h3>
-        <p class="capability-body">Dynamic routing algorithms to eliminate urban congestion. Real-time adaptation to civic flow patterns.</p>
+        <h3 class="capability-title">Edge Processing</h3>
+        <p class="capability-body">Nodes poll sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize splash noise before transmitting.</p>
       </div>
       <!-- Card 5 -->
       <div class="capability-card reveal" style="transition-delay: 0.1s;">
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
         </div>
-        <h3 class="capability-title">Water Resource Mgmt</h3>
-        <p class="capability-body">Precision tracking of municipal water flow and quality. Detect leaks instantly and manage distribution networks.</p>
+        <h3 class="capability-title">Real-Time Alert Engine</h3>
+        <p class="capability-body">Rising water level combined with declining flow triggers instant blockage confirmation with GPS-tagged coordinates sent to municipal authorities.</p>
       </div>
       <!-- Card 6 -->
       <div class="capability-card reveal" style="transition-delay: 0.2s;">
         <div class="capability-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 class="capability-title">Civic Engagement</h3>
-        <p class="capability-body">Digital twin visualization for transparent governance. Bridge the gap between city operators and constituents.</p>
+        <h3 class="capability-title">Weather Cross-Reference</h3>
+        <p class="capability-body">Nodes query real-time weather APIs. If rainfall is zero but water height scales to maximum, the system confirms a structural blockage — not a weather anomaly.</p>
       </div>
     </div>
   </div>
@@ -1620,47 +1692,47 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <section id="architecture" class="section-pad">
   <div class="container">
     <div class="arch-center reveal">
-      <span class="label-tag">TECHNOLOGY ARCHITECTURE</span>
+      <span class="label-tag">TELEMETRY PIPELINE</span>
       <h2 class="arch-headline">The Intelligence Stack</h2>
-      <p class="arch-sub">Scalable, Secure, Intelligent Smart City Ecosystem</p>
+      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
     </div>
     <div class="arch-layers">
       <!-- Layer 4 (top) -->
       <div class="arch-layer reveal">
         <div class="arch-layer-num">
           <span style="font-size:20px; margin-right:8px;">04</span>
-          <span class="arch-layer-label">DASHBOARD &amp; APPLICATIONS</span>
+          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
         </div>
-        <div class="arch-layer-items">Unified Command Center, Citizen App, Urban Planning Tools, Real-time Visualization</div>
+        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
       </div>
       <!-- Layer 3 -->
       <div class="arch-layer reveal" style="transition-delay: 0.1s;">
         <div class="arch-layer-num">
           <span style="font-size:20px; margin-right:8px;">03</span>
-          <span class="arch-layer-label">AI PROCESSING &amp; ANALYTICS</span>
+          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
         </div>
-        <div class="arch-layer-items">Machine Learning Models, Neural Networks, Deep Learning · Real-time Analysis, Pattern Recognition, Predictive Modeling, Intelligent Automation</div>
+        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
       </div>
       <!-- Layer 2 -->
       <div class="arch-layer reveal" style="transition-delay: 0.2s;">
         <div class="arch-layer-num">
           <span style="font-size:20px; margin-right:8px;">02</span>
-          <span class="arch-layer-label">DATA LAYER</span>
+          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
         </div>
-        <div class="arch-layer-items">Data Ingestion, Storage, Data Management, Secure &amp; Scalable Infrastructure</div>
+        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
       </div>
       <!-- Layer 1 (bottom) -->
       <div class="arch-layer reveal" style="transition-delay: 0.3s;">
         <div class="arch-layer-num">
           <span style="font-size:20px; margin-right:8px;">01</span>
-          <span class="arch-layer-label">SENSORS &amp; IoT EDGE</span>
+          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
         </div>
-        <div class="arch-layer-items">IoT Devices, Street Cameras, Environmental Sensors, Traffic Monitors, Utility Meters</div>
+        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
       </div>
     </div>
     <!-- Architecture diagram -->
     <div class="arch-diagram reveal">
-      <div class="arch-diagram-label">CitySense Platform Architecture</div>
+      <div class="arch-diagram-label">City Sense DMFS Platform Architecture</div>
       <svg width="100%" height="200" viewBox="0 0 440 200" fill="none">
         <!-- Layers visual -->
         <rect x="40" y="10" width="360" height="36" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
@@ -1697,91 +1769,49 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   <div class="container">
     <div class="reveal">
       <span class="label-tag">PRODUCT PIPELINE</span>
-      <h2 class="pipeline-headline">Product Pipeline</h2>
+      <h2 class="pipeline-headline">Multi-Pronged Scaling</h2>
       <p class="pipeline-sub">Strategic rollout of urban infrastructure modules.</p>
     </div>
     <div class="timeline">
-      <!-- Q1 2024 -->
+      <!-- Phase 1 -->
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Q1 2024</div>
+          <div class="timeline-date">Phase 1 · Active Pilot</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
-              Sensor Mesh Deployment
+              Drainage Monitoring (DMFS)
               <span class="timeline-badge badge-completed">Completed</span>
             </div>
-            <div class="timeline-card-body">City-wide installation of IoT particulate and acoustic sensors.</div>
+            <div class="timeline-card-body">Patented real-time flood risk telemetry inside urban drainage corridors. Integrated edge processing with automated warning alerts. Currently field-testing in Kochi.</div>
           </div>
         </div>
       </div>
-      <!-- Q2 2024 -->
+      <!-- Phase 2 -->
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Q2 2024</div>
+          <div class="timeline-date">Phase 2 · Roadmap</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
-              Data Lake Integration
-              <span class="timeline-badge badge-completed">Completed</span>
+              Water Quality Metrics
+              <span class="timeline-badge badge-progress">Planned</span>
             </div>
-            <div class="timeline-card-body">Unified ingestion of disparate municipal data silos.</div>
+            <div class="timeline-card-body">Continuous in-situ monitoring of key water parameters (pH, turbidity, dissolved oxygen) across municipal supply networks.</div>
           </div>
         </div>
       </div>
-      <!-- Q3 2024 -->
+      <!-- Phase 3 -->
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Q3 2024</div>
+          <div class="timeline-date">Phase 3 · Future R&D</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
-              AI Predictive Engine
-              <span class="timeline-badge badge-completed">Completed</span>
-            </div>
-            <div class="timeline-card-body">Machine learning models for traffic flow and energy prediction.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Q4 2024 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Q4 2024</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              Municipal Command Center
-              <span class="timeline-badge badge-progress">In Progress</span>
-            </div>
-            <div class="timeline-card-body">Centralized dashboard for cross-departmental operations.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Q1 2025 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Q1 2025</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              Citizen Engagement API
+              AI Flood Prediction
               <span class="timeline-badge badge-upcoming">Upcoming</span>
             </div>
-            <div class="timeline-card-body">Open data endpoints for public application development.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Q2 2025 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Q2 2025</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              Autonomous Utility Grid
-              <span class="timeline-badge badge-upcoming">Upcoming</span>
-            </div>
-            <div class="timeline-card-body">Self-healing smart grid integration for public utilities.</div>
+            <div class="timeline-card-body">Predictive machine learning models trained on structural spatial-temporal telemetry databases to forecast flood events hours in advance.</div>
           </div>
         </div>
       </div>
@@ -1802,29 +1832,29 @@ textarea.form-input { resize: vertical; min-height: 100px; }
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             <span class="label-tag" style="display: inline-flex; align-items: center; gap: 6px;">ACTIVE DEPLOYMENT <span class="pulse-dot"></span></span>
           </div>
-          <h2 class="dmfs-headline">Digital Municipal Fiber System (DMFS)</h2>
-          <p class="dmfs-body">A highly resilient, high-capacity fiber optic backbone engineered to interconnect critical municipal infrastructure. The DMFS deployment supports next-generation traffic management, real-time public safety telemetry, and high-density sensor networks across the metropolitan grid.</p>
+          <h2 class="dmfs-headline">Drainage Monitoring &amp; Flood Alert System (DMFS)</h2>
+          <p class="dmfs-body">A distributed IoT framework engineered to monitor the city's drainage network from the inside out. Deployed at critical choke points, DMFS continuously computes infrastructure flow metrics and level readings before surface waterlogging can materialize.</p>
           <div class="dmfs-stats">
             <div class="dmfs-stat">
-              <div class="stat-label">System Uptime</div>
-              <div class="stat-value">99.99%</div>
+              <div class="stat-label">Hardware Deployed</div>
+              <div class="stat-value">2 Nodes</div>
             </div>
             <div class="dmfs-stat">
-              <div class="stat-label">Throughput</div>
-              <div class="stat-value">40Gbps</div>
+              <div class="stat-label">Polling Rate</div>
+              <div class="stat-value">5 Sec</div>
             </div>
             <div class="dmfs-stat">
-              <div class="stat-label">Active Nodes</div>
-              <div class="stat-value">4,512+</div>
+              <div class="stat-label">Alert Latency</div>
+              <div class="stat-value">&lt;5 Min</div>
             </div>
           </div>
           <div class="dmfs-divider"></div>
-          <a href="#contact" class="btn btn-secondary">Learn More →</a>
+          <a href="#contact" class="btn btn-secondary">Initiate Pilot Agreement →</a>
         </div>
         <!-- Right — Network Map -->
         <div>
           <div class="dmfs-visual">
-            <div class="dmfs-visual-header">DMFS: Digital Municipal Fiber System</div>
+            <div class="dmfs-visual-header">DMFS: Drainage Monitoring &amp; Flood Alert System</div>
             <div class="dmfs-visual-body">
               <svg width="100%" height="300" viewBox="0 0 400 300" fill="none">
                 <!-- Grid lines -->
@@ -1915,14 +1945,14 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 </section>
 
 <!-- ========================================
-     SECTION 9 — RESEARCH
+     SECTION 9 — RESEARCH & DATA ARCHITECTURE
      ======================================== -->
 <section id="research" class="section-pad">
   <div class="container">
     <div class="reveal">
-      <span class="label-tag">RESEARCH &amp; INNOVATION</span>
-      <h2 class="research-headline">Pioneering Urban Science</h2>
-      <p class="research-sub">Data-driven insights shaping the future of municipal infrastructure and citizen services.</p>
+      <span class="label-tag">DATA ARCHITECTURE</span>
+      <h2 class="research-headline">Telemetry Pipeline &amp; Edge Mitigation</h2>
+      <p class="research-sub">How City Sense acquires, validates, and stores critical urban drainage metrics.</p>
       <div class="research-divider"></div>
     </div>
     <div class="research-grid">
@@ -1940,10 +1970,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">White Paper</span>
-          <h3 class="research-card-title">Predictive Maintenance in Grid Ecosystems</h3>
-          <p class="research-card-body">An analysis of sensor-driven anomaly detection models reducing catastrophic municipal power failures by 42%.</p>
-          <a href="#" class="research-card-link">READ MORE →</a>
+          <span class="research-tag">Telemetry Pipeline</span>
+          <h3 class="research-card-title">Rolling-Average Noise Filtration</h3>
+          <p class="research-card-body">Edge nodes poll physical sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize noise from structural splashing or wave action.</p>
+          <a href="#contact" class="research-card-link">CONTACT ENQUIRY →</a>
         </div>
       </div>
       <!-- Card 2 -->
@@ -1965,10 +1995,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Case Study</span>
-          <h3 class="research-card-title">Dynamic Transit Routing Protocols</h3>
-          <p class="research-card-body">Evaluating the impact of real-time multi-agent routing algorithms on public transit efficiency during peak congestion periods.</p>
-          <a href="#" class="research-card-link">READ MORE →</a>
+          <span class="research-tag">Applied Logic Moat</span>
+          <h3 class="research-card-title">False-Alarm Edge Mitigation</h3>
+          <p class="research-card-body">Nodes query real-time external Weather APIs. If rainfall is zero but water level rises to critical, the system confirms a structural blockage alert instead of a weather anomaly.</p>
+          <a href="#contact" class="research-card-link">CONTACT ENQUIRY →</a>
         </div>
       </div>
       <!-- Card 3 -->
@@ -1984,15 +2014,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Research Brief</span>
-          <h3 class="research-card-title">Micro-Climate Zoning Impacts</h3>
-          <p class="research-card-body">Quantifying the thermal mitigation effects of strategic green-roof deployment across dense commercial sectors.</p>
-          <a href="#" class="research-card-link">READ MORE →</a>
+          <span class="research-tag">Data Moat</span>
+          <h3 class="research-card-title">Firestore Ingestion Moat</h3>
+          <p class="research-card-body">Every operational minute of our active DMFS deployment acts as cold storage ingestion for Firestore, mapping out the multi-variant datasets required to fuel our upcoming environmental AI.</p>
+          <a href="#contact" class="research-card-link">CONTACT ENQUIRY →</a>
         </div>
       </div>
     </div>
     <div class="research-cta reveal">
-      <a href="#" class="btn btn-secondary">View Full Archive</a>
+      <a href="#contact" class="btn btn-secondary">Inquire About Data Access</a>
     </div>
   </div>
 </section>
@@ -2004,81 +2034,78 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   <div class="container">
     <div class="partnerships-center reveal">
       <span class="label-tag">PARTNERSHIP OPPORTUNITIES</span>
-      <h2 class="partnerships-headline">Scale with CitySense</h2>
+      <h2 class="partnerships-headline">Collaborate on Urban Resilience</h2>
     </div>
     <div class="partnerships-grid">
-      <!-- Strategic -->
+      <!-- Technology -->
       <div class="partnership-card reveal">
         <div class="partnership-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
         </div>
-        <h3 class="partnership-tier">Strategic</h3>
+        <h3 class="partnership-tier">Technology Partner</h3>
+        <p class="capability-body" style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Co-develop next-generation sensing hardware, low-latency firmware, or cloud infrastructure side-by-side with our engineers.</p>
         <ul class="partnership-list">
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Co-marketing initiatives
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Hardware developers
           </li>
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Dedicated success manager
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Priority roadmap input
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Revenue sharing model
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Telemetry platforms
           </li>
         </ul>
       </div>
-      <!-- Technical -->
+      <!-- Research -->
       <div class="partnership-card reveal" style="transition-delay: 0.1s;">
         <div class="partnership-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
-        <h3 class="partnership-tier">Technical</h3>
+        <h3 class="partnership-tier">Research Partner</h3>
+        <p class="capability-body" style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Collaborate on environmental data analytics, micro-climate research, or urban hydraulic model validation.</p>
         <ul class="partnership-list">
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Full API access &amp; sandboxes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Academic departments
           </li>
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Direct engineering support
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            White-label integration options
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Custom data pipelines
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Hydrology research groups
           </li>
         </ul>
       </div>
       <!-- Municipal -->
       <div class="partnership-card reveal" style="transition-delay: 0.2s;">
         <div class="partnership-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01"/><path d="M9 13h.01"/><path d="M9 17h.01"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
         </div>
-        <h3 class="partnership-tier">Municipal</h3>
+        <h3 class="partnership-tier">Municipal Partner</h3>
+        <p class="capability-body" style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Deploy DMFS inside your local municipal drains. We work with public authorities to map, install, and manage nodes.</p>
         <ul class="partnership-list">
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Civic data pooling
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Municipal corporations
           </li>
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Cross-agency collaboration tools
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Disaster authorities
+          </li>
+        </ul>
+      </div>
+      <!-- Funding -->
+      <div class="partnership-card reveal" style="transition-delay: 0.3s;">
+        <div class="partnership-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3 class="partnership-tier">Funding Partner</h3>
+        <p class="capability-body" style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Finance a patented, government-backed urban resilience platform at the early scaling phase with clear public milestones.</p>
+        <ul class="partnership-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Venture capital &amp; CSR
           </li>
           <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Grant application assistance
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Public transparency portals
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Development grants
           </li>
         </ul>
       </div>
@@ -2096,8 +2123,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   <div class="container">
     <div class="team-center reveal">
       <span class="label-tag">OUR TEAM</span>
-      <h2 class="team-headline">The Minds Behind the City</h2>
-      <p class="team-sub">Our multidisciplinary team of urban planners, data scientists, and engineers dedicated to building smarter, more resilient civic infrastructure.</p>
+      <h2 class="team-headline">The Founding Execution Team</h2>
+      <p class="team-sub">City Sense was formalized and operationalized into a registered partnership firm on 20 December 2025 by four B.Tech Information Technology students (2024–2028 Batch) at CUSAT.</p>
     </div>
     <div class="team-grid">
       <!-- Member 1 -->
@@ -2105,10 +2132,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="team-avatar">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <div class="team-name">Dr. Elena Rostova</div>
-        <div class="team-role">Chief Data Scientist</div>
+        <div class="team-name">Adithya Krishnan K S</div>
+        <div class="team-role">Co-Founder &amp; Managing Partner · CEO</div>
         <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/adithya-krishnan-ks-7a8bb0329" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:adithyak847@gmail.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
       <!-- Member 2 -->
@@ -2116,10 +2148,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="team-avatar">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <div class="team-name">Marcus Chen</div>
-        <div class="team-role">Head of Urban Policy</div>
+        <div class="team-name">Ashmith Babu P S</div>
+        <div class="team-role">Co-Founder · CTO</div>
         <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/ashmith-babu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:ashmithb796@gmail.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
       <!-- Member 3 -->
@@ -2127,43 +2164,46 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="team-avatar">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <div class="team-name">Sarah Jenkins</div>
-        <div class="team-role">Lead Systems Architect</div>
+        <div class="team-name">Amal Mathew Abraham</div>
+        <div class="team-role">Co-Founder · CFO &amp; Marketing Lead</div>
         <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/amal-mathew-abraham-90630632a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:amal.mathew2225@gmail.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
       <!-- Member 4 -->
-      <div class="team-card reveal">
+      <div class="team-card reveal" style="transition-delay: 0.3s;">
         <div class="team-avatar">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <div class="team-name">David Al-Fayed</div>
-        <div class="team-role">VP of Product</div>
+        <div class="team-name">Jesse Sathyadas</div>
+        <div class="team-role">Co-Founder · CFO &amp; R&amp;D Lead</div>
         <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:jessemonu999@gmail.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
-      <!-- Member 5 -->
-      <div class="team-card reveal" style="transition-delay: 0.1s;">
-        <div class="team-avatar">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+
+    <!-- Faculty Mentors Section -->
+    <div class="team-mentors">
+      <div class="team-mentors-label">FACULTY MENTORS</div>
+      <div class="mentors-grid">
+        <div class="mentor-card reveal">
+          <div class="mentor-name">Dr. Santosh Kumar M B</div>
+          <div class="mentor-dept">CUSAT School of Engineering</div>
         </div>
-        <div class="team-name">Emily Wu</div>
-        <div class="team-role">Director of Operations</div>
-        <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </div>
-      </div>
-      <!-- Member 6 -->
-      <div class="team-card reveal" style="transition-delay: 0.2s;">
-        <div class="team-avatar">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <div class="team-name">James Thorne</div>
-        <div class="team-role">Principal Designer</div>
-        <div class="team-social">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <div class="mentor-card reveal" style="transition-delay: 0.1s;">
+          <div class="mentor-name">Dr. Daleesha M Viswanathan</div>
+          <div class="mentor-dept">CUSAT School of Engineering</div>
         </div>
       </div>
     </div>
@@ -2202,13 +2242,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="footer-grid reveal">
         <!-- Left — Brand -->
         <div class="footer-brand">
-          <div class="footer-logo">CitySense</div>
-          <p class="footer-tagline">Operational Intelligence for Global Governance. Real-time data synthesis for resilient urban ecosystems.</p>
+          <div class="footer-logo">City Sense</div>
+          <p class="footer-tagline">IoT-driven urban intelligence startup. Incubated at CITTIC, CUSAT. Real-time drainage telemetry and flood alerts.</p>
           <div class="footer-brand-icons">
-            <a href="#" aria-label="Website">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <a href="mailto:contact@citysense.in" aria-label="Email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/adithya-krishnan-ks-7a8bb0329" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
@@ -2217,10 +2257,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div>
           <div class="footer-legal-label">Legal &amp; Support</div>
           <ul class="footer-legal-links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">API Documentation</a></li>
-            <li><a href="#">Contact Support</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#why">The Problem</a></li>
+            <li><a href="#capabilities">DMFS Technology</a></li>
+            <li><a href="#recognition">Credentials</a></li>
           </ul>
         </div>
         <!-- Right — Form -->
@@ -2228,18 +2268,29 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           <div class="footer-form-card">
             <div class="footer-form-header">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span class="title">DIRECT INQUIRY</span>
+              <span class="title">ENGAGEMENT INTERFACE</span>
             </div>
-            <form onsubmit="event.preventDefault();">
+            <form id="engagementForm">
+              <div class="form-row" style="margin-bottom: 16px;">
+                <select id="partnerType" class="form-select" required>
+                  <option value="government">Government / Municipal Body (CSML / Pilot Deployments)</option>
+                  <option value="technology">Technology Partner (Hardware Production / Edge AI Calibration)</option>
+                  <option value="research">Research Collaborator (Hydrology / University Grant Alignments)</option>
+                  <option value="investor">Investor / Incubator Network (Seed / Pre-Series A Capital Allocation)</option>
+                </select>
+              </div>
               <div class="form-row">
-                <input type="text" class="form-input" placeholder="Name / Designation" id="contactName">
-                <input type="email" class="form-input" placeholder="Official Email" id="contactEmail">
+                <input type="text" class="form-input" placeholder="Contact Name" id="contactName" required>
+                <input type="text" class="form-input" placeholder="Entity / Organization" id="contactOrg" required>
               </div>
-              <div class="form-row full">
-                <textarea class="form-input" placeholder="Message Core" rows="4" id="contactMessage"></textarea>
+              <div class="form-row full" style="margin-top: 16px;">
+                <input type="email" class="form-input" placeholder="Official Email Address" id="contactEmail" required>
               </div>
-              <div class="form-submit">
-                <button type="submit" class="btn btn-primary">Transmit →</button>
+              <div class="form-row full" style="margin-top: 16px;">
+                <textarea class="form-input" placeholder="Outline localization demands, scaling terms, or pipeline integration scopes..." rows="4" id="contactMessage" required></textarea>
+              </div>
+              <div class="form-submit" style="margin-top: 16px;">
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Transmit Engagement Parameters →</button>
               </div>
             </form>
           </div>
@@ -2247,7 +2298,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <!-- Bottom strip -->
       <div class="footer-bottom">
-        <div class="footer-copy">© 2024 CitySense Infrastructure. All rights reserved.</div>
+        <div class="footer-copy">© 2026 City Sense. All rights reserved.<br><span style="font-size: 11px; opacity: 0.6;">Registered Partnership Firm (Est. 20 Dec 2025). Cochin, Kerala, India.</span></div>
         <div class="footer-status">
           <span class="pulse-dot"></span>
           SYSTEM STATUS: NOMINAL
@@ -2298,6 +2349,23 @@ window.addEventListener('scroll', () => {
     navbar.style.borderBottomColor = 'rgba(255,255,255,0.08)';
   }
 });
+
+// Contact form submission logic via mailto
+const engagementForm = document.getElementById('engagementForm');
+if (engagementForm) {
+  engagementForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const partnerType = document.getElementById('partnerType').value;
+    const name = document.getElementById('contactName').value;
+    const org = document.getElementById('contactOrg').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+
+    const subject = encodeURIComponent(`Enquiry from ${name} (${org})`);
+    const body = encodeURIComponent(`Stakeholder Segment: ${partnerType}\nName: ${name}\nOrganisation: ${org}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:contact@citysense.in?subject=${subject}&body=${body}`;
+  });
+}
 </script>
 
 </body>

@@ -462,43 +462,68 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   letter-spacing: 0.08em;
   color: var(--text-muted);
 }
-.testimonials {
+.validation-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
-.testimonial-card {
+.validation-card {
   background: var(--bg-card);
   border: 1px solid var(--border-green);
   border-radius: var(--radius);
   padding: 28px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.testimonial-quote {
-  font-size: 36px;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 16px;
+.validation-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
 }
-.testimonial-text {
-  font-size: 15px;
-  color: var(--text-muted);
-  font-style: italic;
-  line-height: 1.7;
+.validation-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(34,197,94,0.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
+  color: var(--accent);
 }
-.testimonial-name {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text-primary);
-}
-.testimonial-role {
+.validation-tag {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
-  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.validation-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.validation-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.validation-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
 }
 
 /* ========================================
@@ -1205,7 +1230,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .hero-grid, .about-grid, .dmfs-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 42px; }
   .hero-dashboard { margin-top: 40px; }
-  .capabilities-grid, .testimonials, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-stats {
     grid-template-columns: 1fr 1fr;
   }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1235,7 +1260,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .hero-buttons { flex-direction: column; }
   .hero-stats { flex-direction: column; gap: 20px; }
   .hero-stat + .hero-stat { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
-  .capabilities-grid, .testimonials, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-stats {
     grid-template-columns: 1fr;
   }
   .about-pills { flex-direction: column; }
@@ -1615,24 +1640,36 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="award-name">Deployed in Kochi</div>
       </div>
     </div>
-    <div class="testimonials reveal">
-      <div class="testimonial-card">
-        <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
-        <div class="testimonial-name">Contextual Case Study</div>
-        <div class="testimonial-role">2018 Kerala Floods — Kochi Urban Drainage Failure</div>
+    <div class="validation-grid reveal">
+      <!-- Card 1 -->
+      <div class="validation-card">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="validation-tag">CONTEXTUAL CASE STUDY</div>
+        <h3 class="validation-title">Kochi Urban Drainage Failure</h3>
+        <p class="validation-body">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
+        <div class="validation-footer">2018 Kerala Floods Context</div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
-        <div class="testimonial-name">Patent Collaboration</div>
-        <div class="testimonial-role">Granted April 2025 — CUSAT Researchers</div>
+      <!-- Card 2 -->
+      <div class="validation-card" style="transition-delay: 0.1s;">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+        </div>
+        <div class="validation-tag">PATENT COLLABORATION</div>
+        <h3 class="validation-title">Drainage Telemetry Architecture</h3>
+        <p class="validation-body">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
+        <div class="validation-footer">Granted April 2025 · CUSAT Inventors</div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-quote">&#10077;</div>
-        <p class="testimonial-text">Formally backed under the Rashtriya Uchchatar Shiksha Abhiyan (RUSA) framework, Ministry of Education, Government of India, for specialized edge prototype operationalization and field deployment.</p>
-        <div class="testimonial-name">RUSA Grant Sanctioned</div>
-        <div class="testimonial-role">Ministry of Education, Government of India</div>
+      <!-- Card 3 -->
+      <div class="validation-card" style="transition-delay: 0.2s;">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <div class="validation-tag">FUNDING FRAMEWORK</div>
+        <h3 class="validation-title">RUSA Development Grant</h3>
+        <p class="validation-body">Formally backed and sanctioned under the Rashtriya Uchchatar Shiksha Abhiyan (RUSA) framework, Ministry of Education, Government of India, for specialized edge prototype operationalization and field deployment.</p>
+        <div class="validation-footer">Ministry of Education, Govt. of India</div>
       </div>
     </div>
   </div>
@@ -1870,87 +1907,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div>
           <div class="dmfs-visual">
             <div class="dmfs-visual-header">DMFS: Drainage Monitoring &amp; Flood Alert System</div>
-            <div class="dmfs-visual-body">
-              <svg width="100%" height="300" viewBox="0 0 400 300" fill="none">
-                <!-- Grid lines -->
-                <g opacity="0.08">
-                  <line x1="0" y1="50" x2="400" y2="50" stroke="#22C55E"/>
-                  <line x1="0" y1="100" x2="400" y2="100" stroke="#22C55E"/>
-                  <line x1="0" y1="150" x2="400" y2="150" stroke="#22C55E"/>
-                  <line x1="0" y1="200" x2="400" y2="200" stroke="#22C55E"/>
-                  <line x1="0" y1="250" x2="400" y2="250" stroke="#22C55E"/>
-                  <line x1="50" y1="0" x2="50" y2="300" stroke="#22C55E"/>
-                  <line x1="100" y1="0" x2="100" y2="300" stroke="#22C55E"/>
-                  <line x1="150" y1="0" x2="150" y2="300" stroke="#22C55E"/>
-                  <line x1="200" y1="0" x2="200" y2="300" stroke="#22C55E"/>
-                  <line x1="250" y1="0" x2="250" y2="300" stroke="#22C55E"/>
-                  <line x1="300" y1="0" x2="300" y2="300" stroke="#22C55E"/>
-                  <line x1="350" y1="0" x2="350" y2="300" stroke="#22C55E"/>
-                </g>
-                <!-- Connection lines (fiber paths) -->
-                <g>
-                  <line x1="80" y1="60" x2="200" y2="80" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
-                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="200" y1="80" x2="320" y2="55" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
-                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="2.5s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="200" y1="80" x2="200" y2="150" stroke="#22C55E" stroke-width="2" opacity="0.5">
-                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="200" y1="150" x2="100" y2="180" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
-                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.8s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="200" y1="150" x2="310" y2="170" stroke="#22C55E" stroke-width="1.5" opacity="0.4">
-                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3.2s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="100" y1="180" x2="60" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
-                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="2.5s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="100" y1="180" x2="180" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
-                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="310" y1="170" x2="350" y2="230" stroke="#22C55E" stroke-width="1" opacity="0.3">
-                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="2.7s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="310" y1="170" x2="260" y2="240" stroke="#22C55E" stroke-width="1" opacity="0.3">
-                    <animate attributeName="opacity" values="0.15;0.4;0.15" dur="3.3s" repeatCount="indefinite"/>
-                  </line>
-                  <line x1="80" y1="60" x2="60" y2="240" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.15"/>
-                  <line x1="320" y1="55" x2="350" y2="230" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.15"/>
-                </g>
-                <!-- Hub node (center) -->
-                <circle cx="200" cy="150" r="10" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="2">
-                  <animate attributeName="r" values="10;13;10" dur="3s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="200" cy="150" r="4" fill="#22C55E"/>
-                <!-- Major nodes -->
-                <circle cx="80" cy="60" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
-                <circle cx="80" cy="60" r="3" fill="#22C55E"/>
-                <circle cx="200" cy="80" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
-                <circle cx="200" cy="80" r="3" fill="#22C55E"/>
-                <circle cx="320" cy="55" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
-                <circle cx="320" cy="55" r="3" fill="#22C55E"/>
-                <circle cx="100" cy="180" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
-                <circle cx="100" cy="180" r="3" fill="#22C55E"/>
-                <circle cx="310" cy="170" r="6" fill="rgba(34,197,94,0.2)" stroke="#22C55E" stroke-width="1.5"/>
-                <circle cx="310" cy="170" r="3" fill="#22C55E"/>
-                <!-- Edge nodes -->
-                <circle cx="60" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
-                <circle cx="180" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
-                <circle cx="260" cy="240" r="4" fill="#22C55E" opacity="0.5"/>
-                <circle cx="350" cy="230" r="4" fill="#22C55E" opacity="0.5"/>
-                <!-- Data flow particles -->
-                <circle r="2" fill="#22C55E">
-                  <animateMotion dur="3s" repeatCount="indefinite" path="M80,60 L200,80 L320,55"/>
-                </circle>
-                <circle r="2" fill="#22C55E">
-                  <animateMotion dur="2.5s" repeatCount="indefinite" path="M200,80 L200,150 L310,170"/>
-                </circle>
-                <circle r="2" fill="#22C55E">
-                  <animateMotion dur="4s" repeatCount="indefinite" path="M100,180 L200,150 L310,170 L350,230"/>
-                </circle>
-              </svg>
+            <div class="dmfs-visual-body" style="padding: 0; min-height: auto;">
+              <img src="dmfs-animation.gif" alt="DMFS Monitoring Animation" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; border-radius: 0 0 8px 8px;">
             </div>
           </div>
         </div>

@@ -133,10 +133,17 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   height: 64px;
 }
 .navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-heading);
   font-size: 22px; font-weight: 800;
   color: var(--accent);
   text-decoration: none;
+}
+.logo-img {
+  height: 28px;
+  width: auto;
 }
 .navbar-links { display: flex; gap: 32px; align-items: center; }
 .navbar-links a {
@@ -1013,6 +1020,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   margin-bottom: 48px;
 }
 .footer-brand .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 800;
@@ -1180,6 +1190,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   cursor: pointer;
 }
 .form-select:focus {
@@ -1258,7 +1270,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <div class="container" style="max-width: var(--max-width);">
-    <a href="#hero" class="navbar-logo">City Sense</a>
+    <a href="#hero" class="navbar-logo">
+      <img src="logo.png" alt="City Sense Logo" class="logo-img">
+      City Sense
+    </a>
     <div class="navbar-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#why">The Problem</a>
@@ -2242,7 +2257,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="footer-grid reveal">
         <!-- Left — Brand -->
         <div class="footer-brand">
-          <div class="footer-logo">City Sense</div>
+          <div class="footer-logo">
+            <img src="logo.png" alt="City Sense Logo" class="logo-img">
+            City Sense
+          </div>
           <p class="footer-tagline">IoT-driven urban intelligence startup. Incubated at CITTIC, CUSAT. Real-time drainage telemetry and flood alerts.</p>
           <div class="footer-brand-icons">
             <a href="mailto:contact@citysense.in" aria-label="Email">

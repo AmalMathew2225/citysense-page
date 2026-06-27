@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>City Sense — IoT-Driven Urban Intelligence & Infrastructure Resilience</title>
-<meta name="description" content="City Sense builds intelligent, distributed IoT frameworks for real-time urban drainage monitoring and flood alert systems. Incubated at CITTIC CUSAT, Kochi. Patent No. 565002.">
+<meta name="description" content="City Sense builds intelligent, distributed IoT frameworks for real-time urban drainage monitoring and flood alert systems. Incubated at CITTIC CUSAT, Kochi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -378,46 +378,82 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 
 /* ========================================
-   SECTION 3 — WHY
+   SECTION 3 — WHY (THE PROBLEM)
    ======================================== */
 #why { background: var(--bg-base); }
-.why-center { text-align: center; }
+.why-header {
+  margin-bottom: 48px;
+  text-align: left;
+}
 .why-headline {
   font-size: 40px;
-  margin: 16px 0 48px;
+  line-height: 1.15;
+  margin: 16px 0;
+  color: var(--text-primary);
+  font-weight: 800;
 }
-.why-stats {
+.why-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 720px;
+}
+.why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
-.why-stat-card {
+.why-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 40px 24px;
-  text-align: center;
+  padding: 32px;
+  text-align: left;
+  transition: border-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
-.why-stat-card .stat-value {
-  font-family: var(--font-heading);
-  font-size: 64px; font-weight: 800;
+.why-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-green);
+}
+.why-card-value {
+  font-size: 36px;
+  font-weight: 600;
   color: var(--accent);
+  margin-bottom: 8px;
   line-height: 1;
-  margin-bottom: 12px;
 }
-.why-stat-card .stat-label {
-  font-size: 15px;
-  color: var(--text-muted);
-  line-height: 1.5;
+.why-card-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
 }
-.why-body {
-  max-width: 640px;
-  margin: 0 auto;
-  font-size: 16px;
+.why-card-text {
+  font-size: 14px;
   color: var(--text-muted);
-  line-height: 1.7;
-  text-align: center;
+  line-height: 1.6;
+}
+.why-gap-callout {
+  background: rgba(10, 22, 40, 0.4);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px 32px;
+  text-align: left;
+}
+.why-gap-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.why-gap-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* ========================================
@@ -1837,7 +1873,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   }
   .hero-title { font-size: 42px; }
   .hero-dashboard { margin-top: 40px; }
-  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-grid {
     grid-template-columns: 1fr 1fr;
   }
   .footer-grid {
@@ -1881,7 +1917,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .hero-buttons { flex-direction: column; }
   .hero-stats { flex-direction: column; gap: 20px; }
   .hero-stat + .hero-stat { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
-  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-stats {
+  .capabilities-grid, .testimonials, .validation-grid, .research-grid, .partnerships-grid, .team-grid, .why-grid {
     grid-template-columns: 1fr;
   }
   .about-pills { flex-direction: column; }
@@ -2089,7 +2125,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <a href="#architecture">Tech Stack</a>
       <a href="#recognition">Credentials</a>
       <a href="#team">Team</a>
-      <a href="#contact" class="btn btn-primary navbar-cta">Partner With Us</a>
+      <a href="#contact" class="btn btn-secondary navbar-cta">Partner With Us</a>
     </div>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -2119,10 +2155,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           <a href="#capabilities" class="btn btn-secondary">Explore DMFS</a>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-value">565002</div>
-            <div class="hero-stat-label">Patent No.</div>
-          </div>
           <div class="hero-stat">
             <div class="hero-stat-value">CITTIC</div>
             <div class="hero-stat-label">Incubated at CUSAT</div>
@@ -2235,25 +2267,40 @@ textarea.form-input { resize: vertical; min-height: 100px; }
      ======================================== -->
 <section id="why" class="section-pad">
   <div class="container">
-    <div class="why-center reveal">
-      <span class="label-tag">THE SYSTEMIC PROBLEM</span>
-      <h2 class="why-headline">Drainage Fails Silently — Cities Respond Too Late</h2>
+    <div class="why-header reveal">
+      <span class="label-tag">THE PROBLEM</span>
+      <h2 class="why-headline">Drainage fails silently.<br>Cities respond too late.</h2>
+      <p class="why-sub">In densely populated urban areas, a drainage blockage can cause significant waterlogging within 20–30 minutes. The failure is invisible — until it isn't.</p>
     </div>
-    <div class="why-stats reveal">
-      <div class="why-stat-card">
-        <div class="stat-value">80%</div>
-        <div class="stat-label">of urban floods in Indian cities are drainage-centric, not river overflow</div>
+    
+    <div class="why-grid reveal">
+      <!-- Card 1 -->
+      <div class="why-card">
+        <div class="why-card-value">2018</div>
+        <div class="why-card-tag">KERALA FLOODS</div>
+        <p class="why-card-text">The worst flood in nearly a century. Kochi was one of the hardest-hit cities — with urban drainage failure cited as a primary amplifier.</p>
       </div>
-      <div class="why-stat-card">
-        <div class="stat-value">2018</div>
-        <div class="stat-label">Kerala Floods — Kochi's drainage failure cited as a primary amplifier</div>
+      
+      <!-- Card 2 -->
+      <div class="why-card">
+        <div class="why-card-value">80%</div>
+        <div class="why-card-tag">URBAN FLOOD CAUSES</div>
+        <p class="why-card-text">Of urban flood events in Indian cities are attributed to drainage system failures, not river overflow — yet monitoring remains river-centric.</p>
       </div>
-      <div class="why-stat-card">
-        <div class="stat-value">20min</div>
-        <div class="stat-label">A drainage blockage can cause severe waterlogging within 20–30 minutes</div>
+      
+      <!-- Card 3 -->
+      <div class="why-card">
+        <div class="why-card-value">Reactive</div>
+        <div class="why-card-tag">CURRENT APPROACH</div>
+        <p class="why-card-text">Municipal drainage monitoring relies on manual inspection and citizen complaints. By the time a blockage is reported, flooding has already begun.</p>
       </div>
     </div>
-    <p class="why-body reveal">Municipal drainage monitoring relies on manual inspection and citizen complaints. By the time a blockage is reported, flooding has already begun. No city in Kerala has a real-time, distributed, automated drainage monitoring system. That is what City Sense is building.</p>
+    
+    <div class="why-gap-callout reveal">
+      <div class="why-gap-text">
+        <strong>The gap:</strong> No city in Kerala has a real-time, distributed, automated drainage monitoring system. That is what City Sense is building.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2980,7 +3027,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
     </div>
     <div class="partnerships-cta reveal">
-      <a href="#contact" class="btn btn-primary">INQUIRE ABOUT PARTNERSHIPS</a>
+      <a href="#contact" class="btn btn-secondary">Inquire About Partnerships</a>
     </div>
   </div>
 </section>

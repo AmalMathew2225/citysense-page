@@ -1895,6 +1895,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
+  #hero {
+    padding-top: 110px !important;
+    padding-bottom: 60px !important;
+    min-height: auto !important;
+  }
+  .about-headline, .why-headline { font-size: 32px !important; }
+  .capabilities-headline, .recognition-headline, .arch-headline, .pipeline-headline, .partnerships-headline, .team-headline, .contact-headline { font-size: 30px !important; }
   .hero-grid, .dmfs-grid { grid-template-columns: 1fr; }
   .dmfs-btn-mobile {
     display: inline-flex !important;
@@ -1926,6 +1933,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .arch-layer-num { min-width: auto; }
 }
 @media (max-width: 768px) {
+  #hero {
+    padding-top: 96px !important;
+    padding-bottom: 48px !important;
+  }
+  .about-headline, .why-headline { font-size: 28px !important; }
+  .capabilities-headline, .recognition-headline, .arch-headline, .pipeline-headline, .partnerships-headline, .team-headline, .contact-headline { font-size: 24px !important; }
   :root {
     --section-pad: 64px;
   }
@@ -2914,7 +2927,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   <div class="container">
     <div class="reveal">
       <span class="label-tag">DATA ARCHITECTURE</span>
-      <h2 class="research-headline">Telemetry Pipeline &amp; Edge Mitigation</h2>
+      <h2 class="research-headline">Edge Intelligence &amp; Data Processing</h2>
       <p class="research-sub">How City Sense acquires, validates, and stores critical urban drainage metrics.</p>
       <div class="research-divider"></div>
     </div>
@@ -2933,7 +2946,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Telemetry Pipeline</span>
+          <span class="research-tag">Edge Signal Filtering</span>
           <h3 class="research-card-title">Rolling-Average Noise Filtration</h3>
           <p class="research-card-body">Edge nodes poll physical sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize noise from structural splashing or wave action.</p>
         </div>

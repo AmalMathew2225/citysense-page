@@ -35,7 +35,9 @@ body {
   --text-primary: #09090b;
   --text-muted: #52525b;
   --border: rgba(0,0,0,0.08);
-  --border-green: rgba(0,0,0,0.12);
+  --border-green: rgba(0, 142, 151, 0.15);
+  --accent-color: #008e97;
+  --accent-color-rgb: 0, 142, 151;
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -87,10 +89,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .btn-primary:hover { background: #27272a; color: #ffffff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 .btn-secondary {
-  background: transparent; color: var(--accent);
-  border: 1px solid var(--accent);
+  background: transparent; color: var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
-.btn-secondary:hover { background: rgba(0,0,0,0.04); transform: translateY(-2px); }
+.btn-secondary:hover { background: rgba(var(--accent-color-rgb), 0.08); transform: translateY(-2px); }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
@@ -121,7 +123,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 .pulse-dot {
   display: inline-block;
   width: 8px; height: 8px;
-  background: var(--accent);
+  background: var(--accent-color);
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
 }
@@ -209,7 +211,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   line-height: 1.1;
   margin-bottom: 20px;
 }
-.hero-title .green { color: var(--accent); }
+.hero-title .green { color: var(--accent-color); }
 .hero-sub {
   font-size: 18px;
   color: var(--text-muted);
@@ -337,7 +339,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .about-pill-icon {
   width: 36px; height: 36px;
-  background: rgba(0,0,0,0.04);
+  background: rgba(var(--accent-color-rgb), 0.08);
+  color: var(--accent-color);
   border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
 }
@@ -429,7 +432,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .why-card:hover {
   transform: translateY(-2px);
-  border-color: var(--border-green);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.15);
+}
+.why-card:active {
+  transform: translateY(0);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .why-card-value {
   font-size: 36px;
@@ -531,7 +540,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .validation-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.15);
+}
+.validation-card:active {
+  transform: translateY(0);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .validation-icon {
   width: 44px;
@@ -637,8 +652,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .capability-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0,0,0,0.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.03);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.15);
+}
+.capability-card:active {
+  transform: translateY(0);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .capability-icon {
   width: 44px; height: 44px;
@@ -2176,6 +2196,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .dmfs-visual .workflow-desc {
   color: #94a3b8 !important;
 }
+.dmfs-visual-header {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
 </style>
 </head>
 <body>
@@ -2238,11 +2265,11 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="hero-dashboard">
           <div class="dashboard-main">
             <div class="dashboard-main-header">Drainage Flow Monitoring</div>
-            <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart" style="color: #ffffff;">
+            <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart" style="color: var(--accent-color);">
               <defs>
                 <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
-                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/>
                 </linearGradient>
               </defs>
               <path d="M0 120 C60 110, 100 80, 140 85 C180 90, 200 60, 240 55 C280 50, 320 40, 360 35 C400 30, 420 20, 440 15" 
@@ -2272,7 +2299,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
               <div class="card-label">Water Level</div>
               <svg width="100%" height="48" viewBox="0 0 180 48" fill="none">
                 <path d="M0 40 C30 35, 50 20, 80 25 C110 30, 130 15, 180 10" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
-                <circle cx="80" cy="25" r="3" fill="currentColor"/>
+                <circle cx="80" cy="25" r="3" fill="var(--accent-color)"/>
               </svg>
               <div class="card-value">42 <span class="unit">cm</span></div>
             </div>
@@ -2284,7 +2311,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                 <rect x="58" y="14" width="16" height="34" rx="2" fill="rgba(0,0,0,0.12)"/>
                 <rect x="82" y="18" width="16" height="30" rx="2" fill="rgba(0,0,0,0.16)"/>
                 <rect x="106" y="8" width="16" height="40" rx="2" fill="rgba(0,0,0,0.2)"/>
-                <rect x="130" y="12" width="16" height="36" rx="2" fill="currentColor" opacity="0.6"/>
+                <rect x="130" y="12" width="16" height="36" rx="2" fill="var(--accent-color)" opacity="0.8"/>
               </svg>
               <div class="card-value">1.8<span class="unit">m/s</span></div>
             </div>
@@ -2309,7 +2336,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="about-pills">
         <div class="about-pill">
           <div class="about-pill-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="about-pill-text">
             <div class="pill-title">CITTIC, CUSAT</div>
@@ -2385,8 +2412,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     <div class="capabilities-grid">
       <!-- Card 1 -->
       <div class="capability-card reveal">
-        <div class="capability-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <div class="capability-icon" style="background: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3 class="capability-title">Rugged In-Situ Nodes</h3>
         <p class="capability-body">Custom IP67/IP68 waterproof, corrosion-resistant enclosures engineered for harsh underground drainage conduits and continuous submerged operation.</p>
@@ -2401,7 +2428,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <!-- Card 3 -->
       <div class="capability-card reveal" style="transition-delay: 0.2s;">
-        <div class="capability-icon">
+        <div class="capability-icon" style="background: rgba(234, 179, 8, 0.08); color: #ca8a04;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h3 class="capability-title">Power Autonomy</h3>
@@ -2410,15 +2437,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <!-- Card 4 -->
       <div class="capability-card reveal">
         <div class="capability-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3 class="capability-title">Edge Processing</h3>
         <p class="capability-body">Nodes poll sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize splash noise before transmitting.</p>
       </div>
       <!-- Card 5 -->
       <div class="capability-card reveal" style="transition-delay: 0.1s;">
-        <div class="capability-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        <div class="capability-icon" style="background: rgba(124, 58, 237, 0.08); color: #7c3aed;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         </div>
         <h3 class="capability-title">Real-Time Alert Engine</h3>
         <p class="capability-body">Triggers a dual-tiered alert pipeline: direct telemetry dashboards inform municipal engineers, while automated localized warnings alert residents and motorists of imminent flood risk.</p>
@@ -2426,7 +2453,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <!-- Card 6 -->
       <div class="capability-card reveal" style="transition-delay: 0.2s;">
         <div class="capability-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
         </div>
         <h3 class="capability-title">Weather Cross-Reference</h3>
         <p class="capability-body">Nodes query real-time weather APIs. If rainfall is zero but water height scales to maximum, the system confirms a structural blockage — not a weather anomaly.</p>
@@ -2741,25 +2768,25 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     </div>
     <div class="award-strip reveal">
       <div class="award-badge">
-        <div class="award-icon">
+        <div class="award-icon" style="background: rgba(139, 92, 246, 0.08); color: #8b5cf6;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
         <div class="award-name">Patent No. 565002</div>
       </div>
       <div class="award-badge">
-        <div class="award-icon">
+        <div class="award-icon" style="background: rgba(16, 185, 129, 0.08); color: #10b981;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <div class="award-name">₹1 Lakh RUSA Grant</div>
       </div>
       <div class="award-badge">
-        <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        <div class="award-icon" style="background: rgba(0, 142, 151, 0.08); color: var(--accent-color);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="award-name">CITTIC Incubated</div>
       </div>
       <div class="award-badge">
-        <div class="award-icon">
+        <div class="award-icon" style="background: rgba(59, 130, 246, 0.08); color: #3b82f6;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
         </div>
         <div class="award-name">Lab-Tested &amp; Simulated</div>
@@ -2768,8 +2795,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     <div class="validation-grid reveal">
       <!-- Card 1 -->
       <div class="validation-card">
-        <div class="validation-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="validation-icon" style="background: rgba(239, 68, 68, 0.08); color: #ef4444;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6 0 1.2-.2 1.6-.6L6 3l2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6L14 3l2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6L22 3"/><path d="M2 12c.6 0 1.2-.2 1.6-.6l2.4-2.4 2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6l2.4-2.4 2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6l2.4-2.4"/><path d="M2 18c.6 0 1.2-.2 1.6-.6l2.4-2.4 2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6l2.4-2.4 2.4 2.4c.4.4 1 .6 1.6.6.6 0 1.2-.2 1.6-.6l2.4-2.4"/></svg>
         </div>
         <div class="validation-tag">CONTEXTUAL CASE STUDY</div>
         <h3 class="validation-title">Kochi Urban Drainage Failure</h3>
@@ -2778,7 +2805,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <!-- Card 2 -->
       <div class="validation-card" style="transition-delay: 0.1s;">
-        <div class="validation-icon">
+        <div class="validation-icon" style="background: rgba(0, 142, 151, 0.08); color: var(--accent-color);">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
         </div>
         <div class="validation-tag">PATENT COLLABORATION</div>
@@ -2788,7 +2815,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <!-- Card 3 -->
       <div class="validation-card" style="transition-delay: 0.2s;">
-        <div class="validation-icon">
+        <div class="validation-icon" style="background: rgba(234, 179, 8, 0.08); color: #ca8a04;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
         </div>
         <div class="validation-tag">FUNDING FRAMEWORK</div>

@@ -1327,14 +1327,14 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   100% { background-position: -200% 50%; }
 }
 .animate-water {
-  background: linear-gradient(90deg, #f4f4f5 0%, #3b82f6 20%, #60a5fa 50%, #3b82f6 80%, #f4f4f5 100%);
+  background: linear-gradient(90deg, #0f172a 0%, #1e3a8a 20%, #3b82f6 50%, #1e3a8a 80%, #0f172a 100%);
   background-size: 200% 100%;
   animation: waterFlow 4s linear infinite;
 }
 
 @keyframes pulseNode {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.9; box-shadow: 0 0 15px #050505; }
+  50% { transform: scale(1.05); opacity: 0.9; box-shadow: 0 0 15px #22c55e; }
 }
 .node-active { animation: pulseNode 2s infinite; }
 
@@ -1509,7 +1509,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   height: 140px;
   border-top: 3px solid #475569;
   border-bottom: 3px solid #475569;
-  background: #f4f4f5;
+  background: #0f172a;
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -1539,7 +1539,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .node-box {
   width: 48px;
   height: 48px;
-  background: #e4e4e7;
+  background: #1e293b;
   border-radius: var(--radius);
   display: flex;
   align-items: center;
@@ -1547,8 +1547,9 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   z-index: 20;
 }
 .node-box.green {
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 15px rgba(34,197,94,0.2);
+  color: #22c55e;
 }
 .node-box.blue {
   border: 2px solid #3b82f6;
@@ -1559,7 +1560,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .node-label {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--accent);
+  color: #ffffff;
   background: rgba(10,22,40,0.8);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
@@ -1600,7 +1601,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   transform: translateX(-50%);
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--text-muted);
+  color: #94a3b8;
   background: #020617;
   padding: 0 4px;
   white-space: nowrap;
@@ -1608,7 +1609,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .emqx-cloud-console {
   width: 48%;
   border: 1px solid var(--border);
-  background: #f4f4f5;
+  background: #0f172a;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
@@ -1616,7 +1617,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   flex-direction: column;
 }
 .console-header {
-  background: #e4e4e7;
+  background: #1e293b;
   padding: 6px 12px;
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -1686,7 +1687,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .pipeline-round-node {
   width: 56px;
   height: 56px;
-  background: #e4e4e7;
+  background: #1e293b;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1704,7 +1705,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .pipeline-worker-card {
   width: 110px;
   height: 70px;
-  background: #e4e4e7;
+  background: #1e293b;
   border: 2px solid #f97316;
   border-radius: var(--radius);
   display: flex;
@@ -1729,13 +1730,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .pipeline-status-popup {
   position: absolute;
   bottom: -32px;
-  background: #f4f4f5;
+  background: #0f172a;
   border: 1px solid var(--border);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--text-primary);
+  color: #34d399;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1769,7 +1770,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1.5px solid #e4e4e7;
+  border-bottom: 1.5px solid #1e293b;
   padding-bottom: 6px;
   margin-bottom: 8px;
 }
@@ -1777,7 +1778,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
 }
 .retrieval-dash-badge {
   margin-left: auto;
@@ -1792,8 +1793,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 }
 .retrieval-metric-box {
   flex: 1;
-  background: rgba(0,0,0,0.02);
-  border: 1px solid #121215;
+  background: rgba(30,41,59,0.3);
+  border: 1px solid #1e293b;
   border-radius: var(--radius-sm);
   padding: 6px;
   transition: all 0.5s;
@@ -1809,13 +1810,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-top: 2px;
 }
 .retrieval-chart-box {
   flex: 1.3;
-  background: rgba(0,0,0,0.02);
-  border: 1px solid #121215;
+  background: rgba(30,41,59,0.3);
+  border: 1px solid #1e293b;
   border-radius: var(--radius-sm);
   padding: 4px;
   display: flex;
@@ -1833,7 +1834,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   transition: height 0.7s ease;
 }
 .chart-bar.green {
-  background: rgba(0,0,0,0.25);
+  background: rgba(34,197,94,0.6);
 }
 .chart-overlay-text {
   position: absolute;
@@ -1863,8 +1864,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   z-index: 10;
 }
 .retrieval-middle-node {
-  background: #f4f4f5;
-  border: 1.5px solid #e4e4e7;
+  background: #0f172a;
+  border: 1.5px solid #1e293b;
   border-radius: var(--radius);
   padding: 6px 12px;
   display: flex;
@@ -1888,14 +1889,14 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 .retrieval-icon-wrap {
   padding: 4px;
   border-radius: var(--radius-sm);
-  background: #e4e4e7;
+  background: #1e293b;
   color: var(--text-muted);
   display: flex;
   align-items: center;
 }
 .retrieval-bottom-node {
-  background: #f4f4f5;
-  border: 1.5px solid #e4e4e7;
+  background: #0f172a;
+  border: 1.5px solid #1e293b;
   border-radius: var(--radius);
   padding: 6px 12px;
   display: flex;
@@ -2164,6 +2165,17 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     font-size: 12px !important;
   }
 }
+
+.dmfs-visual {
+  background: #020617 !important;
+  color: #ffffff !important;
+}
+.dmfs-visual .workflow-title {
+  color: #ffffff !important;
+}
+.dmfs-visual .workflow-desc {
+  color: #94a3b8 !important;
+}
 </style>
 </head>
 <body>
@@ -2179,7 +2191,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <a href="#about">About</a>
       <a href="#why">The Problem</a>
       <a href="#capabilities">DMFS</a>
-      <a href="#architecture">Tech Stack</a>
       <a href="#recognition">Credentials</a>
       <a href="#team">Team</a>
       <a href="#contact" class="btn btn-secondary navbar-cta">Partner With Us</a>
@@ -2227,7 +2238,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="hero-dashboard">
           <div class="dashboard-main">
             <div class="dashboard-main-header">Drainage Flow Monitoring</div>
-            <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart">
+            <svg width="100%" height="140" viewBox="0 0 440 140" fill="none" id="heroChart" style="color: #ffffff;">
               <defs>
                 <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
@@ -2501,14 +2512,14 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
                     <!-- Packets (Node 1 -> Node 2) -->
                     <div style="position: absolute; width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); z-index: 15;">
-                      <div class="anim-packet-l2c" style="position: absolute; width: 8px; height: 8px; background-color: var(--text-primary); border-radius: 50%; box-shadow: 0 0 8px #ffffff; top: 50%; transform: translateY(-50%); opacity: 0;"></div>
-                      <div class="anim-packet-l2c" style="position: absolute; width: 8px; height: 8px; background-color: var(--text-primary); border-radius: 50%; box-shadow: 0 0 8px #ffffff; top: 50%; transform: translateY(-50%); opacity: 0; animation-delay: 1s;"></div>
+                      <div class="anim-packet-l2c" style="position: absolute; width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; top: 50%; transform: translateY(-50%); opacity: 0;"></div>
+                      <div class="anim-packet-l2c" style="position: absolute; width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; top: 50%; transform: translateY(-50%); opacity: 0; animation-delay: 1s;"></div>
                     </div>
 
                     <!-- Packets (Node 3 -> Node 2) -->
                     <div style="position: absolute; width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); z-index: 15;">
-                      <div class="anim-packet-r2c" style="position: absolute; width: 8px; height: 8px; background-color: var(--text-primary); border-radius: 50%; box-shadow: 0 0 8px #ffffff; top: 50%; transform: translateY(-50%); opacity: 0;"></div>
-                      <div class="anim-packet-r2c" style="position: absolute; width: 8px; height: 8px; background-color: var(--text-primary); border-radius: 50%; box-shadow: 0 0 8px #ffffff; top: 50%; transform: translateY(-50%); opacity: 0; animation-delay: 1s;"></div>
+                      <div class="anim-packet-r2c" style="position: absolute; width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; top: 50%; transform: translateY(-50%); opacity: 0;"></div>
+                      <div class="anim-packet-r2c" style="position: absolute; width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; top: 50%; transform: translateY(-50%); opacity: 0; animation-delay: 1s;"></div>
                     </div>
                   </div>
                 </div>
@@ -2716,52 +2727,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   </div>
 </section>
 
-<!-- ========================================
-     SECTION 6 — ARCHITECTURE
-     ======================================== -->
-<section id="architecture" class="section-pad">
-  <div class="container">
-    <div class="arch-center reveal">
-      <span class="label-tag">TELEMETRY PIPELINE</span>
-      <h2 class="arch-headline">The Intelligence Stack</h2>
-      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
-    </div>
-    <div class="arch-layers">
-      <!-- Layer 4 (top) -->
-      <div class="arch-layer reveal">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">04</span>
-          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
-        </div>
-        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
-      </div>
-      <!-- Layer 3 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">03</span>
-          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
-        </div>
-        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
-      </div>
-      <!-- Layer 2 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">02</span>
-          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
-        </div>
-        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
-      </div>
-      <!-- Layer 1 (bottom) -->
-      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">01</span>
-          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
-        </div>
-        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ========================================
      SECTION 4 — RECOGNITION
@@ -3462,12 +3428,12 @@ if (resetFormBtn && engagementForm && formSuccessMessage) {
     cfTitle.className = "retrieval-node-title";
     dbTitle.className = "retrieval-node-title";
     
-    cfIcon.style.background = '#121215';
+    cfIcon.style.background = '#1e293b';
     cfIcon.style.color = 'var(--text-muted)';
-    dbIcon.style.background = '#121215';
+    dbIcon.style.background = '#1e293b';
     dbIcon.style.color = 'var(--text-muted)';
-    cfNode.style.borderColor = '#121215';
-    dbNode.style.borderColor = '#121215';
+    cfNode.style.borderColor = '#1e293b';
+    dbNode.style.borderColor = '#1e293b';
     cardEl.style.borderColor = 'var(--border)';
     
     // Hide all waves
@@ -3542,10 +3508,10 @@ if (resetFormBtn && engagementForm && formSuccessMessage) {
     } else if (seqState === 4) {
       statusTextEl.textContent = '● Live Sync Active';
       statusTextEl.className = "retrieval-dash-badge font-bold";
-      statusTextEl.style.color = '#ffffff';
+      statusTextEl.style.color = '#34d399';
       statusTextEl.style.background = 'rgba(52,211,153,0.1)';
-      cardEl.className = "retrieval-dash-card shadow-[0_0_20px_rgba(0,0,0,0.06)]";
-      cardEl.style.borderColor = 'rgba(0,0,0,0.25)';
+      cardEl.className = "retrieval-dash-card shadow-[0_0_20px_rgba(34,197,94,0.15)]";
+      cardEl.style.borderColor = 'rgba(34,197,94,0.6)';
       metricLevelEl.textContent = "35.0 cm";
       metricRateEl.textContent = "2.62 L/min";
       chartOverlayEl.style.display = 'none';

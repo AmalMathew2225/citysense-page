@@ -1274,13 +1274,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 @keyframes waveTravel {
   0% {
-    left: 0%;
+    left: -10px;
     opacity: 0;
     transform: translateY(-50%) scale(0.6);
   }
-  15% {
+  8% {
     opacity: 1;
-    transform: translateY(-50%) scale(0.85);
+    transform: translateY(-50%) scale(0.8);
   }
   85% {
     opacity: 1;
@@ -1288,7 +1288,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     filter: drop-shadow(0 0 6px currentColor);
   }
   100% {
-    left: 100%;
+    left: calc(100% + 10px);
     opacity: 0;
     transform: translateY(-50%) scale(1.2);
   }
@@ -1300,13 +1300,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 @keyframes waveTravelVerticalDown {
   0% {
-    top: 0%;
+    top: -10px;
     opacity: 0;
     transform: translateX(-50%) scale(0.6) rotate(90deg);
   }
-  15% {
+  8% {
     opacity: 1;
-    transform: translateX(-50%) scale(0.85) rotate(90deg);
+    transform: translateX(-50%) scale(0.8) rotate(90deg);
   }
   85% {
     opacity: 1;
@@ -1314,7 +1314,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     filter: drop-shadow(0 0 6px currentColor);
   }
   100% {
-    top: 100%;
+    top: calc(100% + 10px);
     opacity: 0;
     transform: translateX(-50%) scale(1.2) rotate(90deg);
   }
@@ -1326,13 +1326,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
 
 @keyframes waveTravelVerticalUp {
   0% {
-    bottom: 0%;
+    bottom: -10px;
     opacity: 0;
     transform: translateX(-50%) scale(0.6) rotate(-90deg);
   }
-  15% {
+  8% {
     opacity: 1;
-    transform: translateX(-50%) scale(0.85) rotate(-90deg);
+    transform: translateX(-50%) scale(0.8) rotate(-90deg);
   }
   85% {
     opacity: 1;
@@ -1340,7 +1340,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     filter: drop-shadow(0 0 6px currentColor);
   }
   100% {
-    bottom: 100%;
+    bottom: calc(100% + 10px);
     opacity: 0;
     transform: translateX(-50%) scale(1.2) rotate(-90deg);
   }
@@ -1577,6 +1577,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   z-index: 20;
   position: relative;
 }
+.pipeline-col span {
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
 .pipeline-col.center {
   width: 40%;
 }
@@ -1616,6 +1623,12 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   font-weight: 600;
   color: #f97316;
   margin-top: 4px;
+}
+.worker-text-full {
+  display: inline;
+}
+.worker-text-short {
+  display: none;
 }
 .pipeline-status-popup {
   position: absolute;
@@ -1857,6 +1870,138 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   .hero-stat-value { font-size: 24px; }
   .why-stat-card .stat-value { font-size: 48px; }
   .dmfs-stat .stat-value { font-size: 22px; }
+}
+
+/* Workflow Container Responsiveness */
+@media (max-width: 576px) {
+  .workflow-container {
+    aspect-ratio: auto !important;
+    height: 380px !important;
+  }
+  .workflow-scene {
+    padding: 12px !important;
+  }
+  .workflow-header {
+    margin-bottom: 8px !important;
+  }
+  .workflow-title {
+    font-size: 15px !important;
+  }
+  .workflow-desc {
+    font-size: 11px !important;
+  }
+  
+  /* Scene 1 Mobile */
+  .drainage-environment {
+    width: 100% !important;
+    height: 120px !important;
+  }
+  .drainage-nodes {
+    padding: 0 20px !important;
+  }
+  .node-box {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .node-box.blue {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  
+  /* Scene 2 Mobile */
+  .mqtt-broker-layout {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  .emqx-cloud-console {
+    width: 52% !important;
+  }
+  .console-header {
+    padding: 4px 8px !important;
+  }
+  .console-body {
+    height: 110px !important;
+    font-size: 7.5px !important;
+    line-height: 1.2 !important;
+  }
+  .wire-label {
+    font-size: 8px !important;
+    top: -14px !important;
+  }
+  
+  /* Scene 3 Mobile */
+  .pipeline-layout {
+    width: 100% !important;
+    padding: 0 10px !important;
+  }
+  .pipeline-worker-card {
+    width: 70px !important;
+    height: 70px !important;
+    padding: 8px !important;
+  }
+  .pipeline-worker-card span {
+    font-size: 8px !important;
+  }
+  .worker-text-full {
+    display: none !important;
+  }
+  .worker-text-short {
+    display: inline !important;
+  }
+  .pipeline-round-node {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .pipeline-col span {
+    font-size: 8.5px !important;
+  }
+  
+  /* Scene 4 Mobile */
+  .dashboard-retrieval-layout {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .retrieval-dash-card {
+    padding: 8px !important;
+  }
+  .retrieval-dash-title {
+    font-size: 10px !important;
+  }
+  .retrieval-dash-badge {
+    font-size: 7.5px !important;
+  }
+  .retrieval-metric-value {
+    font-size: 11px !important;
+  }
+  .retrieval-chart-box {
+    height: 32px !important;
+  }
+  .chart-overlay-text {
+    font-size: 6px !important;
+  }
+  .retrieval-middle-node, .retrieval-bottom-node {
+    padding: 4px 8px !important;
+    gap: 6px !important;
+  }
+  .retrieval-node-title {
+    font-size: 9px !important;
+  }
+  .retrieval-node-sub {
+    font-size: 7px !important;
+  }
+  .retrieval-waves-upper, .retrieval-waves-lower {
+    height: 24px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .workflow-container {
+    aspect-ratio: 4 / 3 !important;
+    min-height: 350px !important;
+  }
+  .retrieval-metric-value {
+    font-size: 12px !important;
+  }
 }
 </style>
 </head>
@@ -2613,7 +2758,10 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                     <div class="pipeline-col center">
                       <div class="pipeline-worker-card">
                         <svg class="anim-blink" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>
-                        <span>Cloudflare Worker</span>
+                        <span>
+                          <span class="worker-text-full">Cloudflare Worker</span>
+                          <span class="worker-text-short">Cloudflare</span>
+                        </span>
                       </div>
                       <div class="pipeline-status-popup" id="workflowStatusText">
                         <svg class="animate-spin text-emerald-400" style="width: 10px; height: 10px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2v4"/></svg>

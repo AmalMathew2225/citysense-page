@@ -811,6 +811,17 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.timeline-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.15);
+}
+.timeline-card:active {
+  transform: translateY(0);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .timeline-card-title {
   font-size: 16px;
@@ -828,9 +839,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   border-radius: 12px;
   font-weight: 600;
 }
-.badge-completed { color: var(--accent); border: 1px solid var(--accent); }
-.badge-progress { color: #F59E0B; border: 1px solid #F59E0B; }
-.badge-upcoming { color: var(--text-muted); border: 1px solid var(--text-muted); }
+.badge-completed { color: #16a34a; border: 1px solid #16a34a; background: rgba(22, 163, 74, 0.08); }
+.badge-progress { color: #d97706; border: 1px solid #d97706; background: rgba(217, 119, 6, 0.08); }
+.badge-upcoming { color: #71717a; border: 1px solid #d4d4d8; background: rgba(113, 113, 122, 0.08); }
 .timeline-card-body {
   font-size: 13px;
   color: var(--text-muted);
@@ -953,11 +964,17 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .research-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0,0,0,0.08);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(var(--accent-color-rgb), 0.15);
+}
+.research-card:active {
+  transform: translateY(0);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .research-card-img {
   height: 160px;
@@ -2698,7 +2715,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                         <div class="anim-wave-v-down" style="position: absolute; left: 50%; animation-delay: 0.9s;"><svg style="width: 24px; height: 12px;" viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0,6 Q 5,1 10,6 T 20,6 T 30,6 T 40,6" /></svg></div>
                       </div>
                       <!-- Cloudflare -> Dash -->
-                      <div id="waveCfToDash" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; color: var(--text-primary);">
+                      <div id="waveCfToDash" style="display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; color: #34d399;">
                         <div class="anim-wave-v-up" style="position: absolute; left: 50%;"><svg style="width: 24px; height: 12px;" viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0,6 Q 5,1 10,6 T 20,6 T 30,6 T 40,6" /></svg></div>
                         <div class="anim-wave-v-up" style="position: absolute; left: 50%; animation-delay: 0.45s;"><svg style="width: 24px; height: 12px;" viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0,6 Q 5,1 10,6 T 20,6 T 30,6 T 40,6" /></svg></div>
                         <div class="anim-wave-v-up" style="position: absolute; left: 50%; animation-delay: 0.9s;"><svg style="width: 24px; height: 12px;" viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0,6 Q 5,1 10,6 T 20,6 T 30,6 T 40,6" /></svg></div>
@@ -2912,18 +2929,50 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <!-- Card 1 -->
       <div class="research-card reveal">
         <div class="research-card-img">
-          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
-            <rect x="10" y="45" width="12" height="30" rx="2" fill="rgba(0,0,0,0.06)"/>
-            <rect x="28" y="30" width="12" height="45" rx="2" fill="rgba(0,0,0,0.1)"/>
-            <rect x="46" y="35" width="12" height="40" rx="2" fill="rgba(0,0,0,0.08)"/>
-            <rect x="64" y="20" width="12" height="55" rx="2" fill="rgba(255,255,255,0.35)"/>
-            <rect x="82" y="15" width="12" height="60" rx="2" fill="rgba(255,255,255,0.45)"/>
-            <rect x="100" y="10" width="12" height="65" rx="2" fill="currentColor" opacity="0.5"/>
-            <polyline points="16,44 34,29 52,34 70,19 88,14 106,9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none">
+            <!-- Height scale ruler on left -->
+            <line x1="30" y1="30" x2="30" y2="130" stroke="rgba(34, 197, 94, 0.2)" stroke-width="1.5" stroke-dasharray="2 2"/>
+            <line x1="25" y1="30" x2="35" y2="30" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+            <line x1="25" y1="55" x2="35" y2="55" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+            <line x1="25" y1="80" x2="35" y2="80" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+            <line x1="25" y1="105" x2="35" y2="105" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+            <line x1="25" y1="130" x2="35" y2="130" stroke="rgba(34, 197, 94, 0.3)" stroke-width="1.5"/>
+
+            <!-- Water Waves at bottom -->
+            <path d="M 0,110 Q 40,95 80,110 T 160,110 T 240,110 T 320,110" stroke="rgba(34, 197, 94, 0.15)" stroke-width="1.5" fill="none"/>
+            <path d="M 0,120 Q 40,105 80,120 T 160,120 T 240,120 T 320,120" stroke="rgba(34, 197, 94, 0.25)" stroke-width="2" fill="none"/>
+            <path d="M 0,130 Q 40,115 80,130 T 160,130 T 240,130 T 320,130" stroke="rgba(34, 197, 94, 0.1)" stroke-width="1" fill="none"/>
+
+            <!-- In-situ Cylinder Node (Green) -->
+            <rect x="75" y="55" width="28" height="60" rx="14" fill="#091811" stroke="#22c55e" stroke-width="2" style="filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.4));"/>
+            <!-- Antenna -->
+            <line x1="89" y1="55" x2="89" y2="35" stroke="#22c55e" stroke-width="2"/>
+            <circle cx="89" cy="35" r="2.5" fill="#22c55e"/>
+            <!-- Glowing target icon on node -->
+            <circle cx="89" cy="85" r="6" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+            <circle cx="89" cy="85" r="2" fill="#22c55e"/>
+            <!-- Signal ripples around node -->
+            <circle cx="89" cy="115" r="15" stroke="rgba(34, 197, 94, 0.15)" stroke-width="1" fill="none"/>
+            <circle cx="89" cy="115" r="25" stroke="rgba(34, 197, 94, 0.08)" stroke-width="1" fill="none"/>
+
+            <!-- Dotted vertical grid lines -->
+            <line x1="140" y1="30" x2="140" y2="130" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 3"/>
+            <line x1="190" y1="30" x2="190" y2="130" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 3"/>
+            <line x1="240" y1="30" x2="240" y2="130" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 3"/>
+            <line x1="290" y1="30" x2="290" y2="130" stroke="rgba(255,255,255,0.05)" stroke-dasharray="3 3"/>
+
+            <!-- Glowing Telemetry curve (Green) -->
+            <path d="M 89,85 Q 115,70 140,55 T 190,45 T 240,65 T 290,40" stroke="#22c55e" stroke-width="3" stroke-linecap="round" fill="none" style="filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));"/>
+            
+            <!-- Curve points -->
+            <circle cx="140" cy="55" r="4.5" fill="#ffffff" stroke="#22c55e" stroke-width="2"/>
+            <circle cx="190" cy="45" r="4.5" fill="#ffffff" stroke="#22c55e" stroke-width="2"/>
+            <circle cx="240" cy="65" r="4.5" fill="#ffffff" stroke="#22c55e" stroke-width="2"/>
+            <circle cx="290" cy="40" r="4.5" fill="#22c55e" stroke="#ffffff" stroke-width="1.5"/>
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Edge Signal Filtering</span>
+          <span class="research-tag" style="color: #16a34a; border-color: #16a34a; background: rgba(22, 163, 74, 0.08);">Edge Signal Filtering</span>
           <h3 class="research-card-title">Rolling-Average Noise Filtration</h3>
           <p class="research-card-body">Edge nodes poll physical sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize noise from structural splashing or wave action.</p>
         </div>
@@ -2931,23 +2980,43 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <!-- Card 2 -->
       <div class="research-card reveal" style="transition-delay: 0.1s;">
         <div class="research-card-img">
-          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
-            <circle cx="30" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
-            <circle cx="60" cy="25" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
-            <circle cx="90" cy="45" r="10" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-            <circle cx="55" cy="55" r="5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="30" y1="40" x2="60" y2="25" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-            <line x1="60" y1="25" x2="90" y2="45" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-            <line x1="30" y1="40" x2="55" y2="55" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-            <line x1="55" y1="55" x2="90" y2="45" stroke="currentColor" stroke-width="1" opacity="0.3"/>
-            <circle cx="30" cy="40" r="3" fill="currentColor" opacity="0.6"/>
-            <circle cx="60" cy="25" r="3" fill="currentColor" opacity="0.6"/>
-            <circle cx="90" cy="45" r="3" fill="currentColor" opacity="0.6"/>
-            <circle cx="55" cy="55" r="2" fill="currentColor" opacity="0.5"/>
+          <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none">
+            <!-- Cloud on left -->
+            <path d="M50 70h-12a10 10 0 0 1-2-19.8 12 12 0 0 1 22.8-4.2A10 10 0 0 1 56 60a10 10 0 0 1-6 10z" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="#131024" style="filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.4));"/>
+            <!-- Rain drops -->
+            <line x1="32" y1="78" x2="32" y2="88" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="38" y1="82" x2="38" y2="92" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="44" y1="78" x2="44" y2="88" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="50" y1="82" x2="50" y2="92" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+            <!-- Left link line with arrow -->
+            <path d="M75 60 h30" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle cx="75" cy="60" r="3" fill="#a78bfa"/>
+
+            <!-- Shield in center -->
+            <path d="M160 38s16-8 16-8v20c0 14-16 22-16 22s-16-8-16-22V30s16 8 16 8z" stroke="#a78bfa" stroke-width="3" fill="#131024" style="filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));"/>
+            <!-- Checkmark inside shield -->
+            <path d="M152 52l5 5 10-10" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Right link line with arrow -->
+            <path d="M185 60 h30" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle cx="215" cy="60" r="3" fill="#a78bfa"/>
+
+            <!-- Water droplet on right -->
+            <path d="M255 64a8 8 0 1 1-16 0c0-8 8-16 8-16s8 8 8 16z" stroke="#a78bfa" stroke-width="2.5" fill="#131024" style="filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.4));"/>
+            
+            <!-- Mini water waves under droplet -->
+            <path d="M230 75 Q 237 72 245 75 T 260 75 T 270 75" stroke="#a78bfa" stroke-width="1.5" fill="none"/>
+            <path d="M230 81 Q 237 78 245 81 T 260 81 T 270 81" stroke="#a78bfa" stroke-width="1" fill="none"/>
+
+            <!-- Alert warning icon next to droplet -->
+            <path d="M278 72l9-16a2 2 0 0 1 3.5 0l9 16A2 2 0 0 1 297.8 75H279.8a2 2 0 0 1-1.8-3z" stroke="#a78bfa" stroke-width="2" fill="#131024"/>
+            <line x1="289" y1="62" x2="289" y2="66" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="289" cy="70" r="1.2" fill="#a78bfa"/>
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Applied Logic Moat</span>
+          <span class="research-tag" style="color: #7c3aed; border-color: #7c3aed; background: rgba(124, 58, 237, 0.08);">Applied Logic Moat</span>
           <h3 class="research-card-title">False-Alarm Edge Mitigation</h3>
           <p class="research-card-body">Nodes query real-time external Weather APIs. If rainfall is zero but water level rises to critical, the system confirms a structural blockage alert instead of a weather anomaly.</p>
         </div>
@@ -2955,17 +3024,47 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <!-- Card 3 -->
       <div class="research-card reveal" style="transition-delay: 0.2s;">
         <div class="research-card-img">
-          <svg width="120" height="80" viewBox="0 0 120 80" fill="none">
-            <path d="M10 70 Q30 30 60 50 Q90 70 110 20" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
-            <path d="M10 70 Q30 40 60 55 Q90 70 110 30" stroke="rgba(0,0,0,0.12)" stroke-width="1" fill="none"/>
-            <circle cx="35" cy="40" r="4" fill="rgba(0,0,0,0.12)"/>
-            <circle cx="60" cy="50" r="4" fill="rgba(0,0,0,0.16)"/>
-            <circle cx="85" cy="42" r="4" fill="rgba(0,0,0,0.2)"/>
-            <circle cx="110" cy="20" r="4" fill="currentColor" opacity="0.6"/>
+          <svg width="100%" height="100%" viewBox="0 0 320 160" fill="none">
+            <!-- Ingestion stream pathways on left -->
+            <path d="M40 45 C70 45, 75 75, 110 75" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="40" cy="45" r="2.5" fill="#3b82f6"/>
+
+            <path d="M45 55 C72 55, 75 75, 110 75" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="45" cy="55" r="2.5" fill="#3b82f6"/>
+
+            <path d="M40 75 H110" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="40" cy="75" r="3" fill="#3b82f6"/>
+
+            <path d="M45 95 C72 95, 75 75, 110 75" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="45" cy="95" r="2.5" fill="#3b82f6"/>
+
+            <path d="M40 105 C70 105, 75 75, 110 75" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="40" cy="105" r="2.5" fill="#3b82f6"/>
+
+            <!-- Ingestion direction arrow -->
+            <path d="M120 75l-10-7v14z" fill="#3b82f6" style="filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.6));"/>
+
+            <!-- Database Cylinder Stack (Blue) -->
+            <!-- Top cylinder -->
+            <ellipse cx="195" cy="45" rx="26" ry="10" stroke="#3b82f6" stroke-width="3" fill="#071120" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));"/>
+            
+            <!-- Middle cylinder -->
+            <path d="M169 45v20c0 5.5 11.6 10 26 10s26-4.5 26-10V45" stroke="#3b82f6" stroke-width="3" fill="#071120" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));"/>
+            
+            <!-- Bottom cylinder -->
+            <path d="M169 65v20c0 5.5 11.6 10 26 10s26-4.5 26-10V65" stroke="#3b82f6" stroke-width="3" fill="#071120" style="filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));"/>
+
+            <!-- Disk separation lines -->
+            <ellipse cx="195" cy="65" rx="26" ry="10" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <ellipse cx="195" cy="85" rx="26" ry="10" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+            <!-- Safe Lock verification badge bottom right -->
+            <circle cx="218" cy="98" r="10" fill="#3b82f6" style="filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));"/>
+            <path d="M213 98l3 3 7-7" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="research-card-content">
-          <span class="research-tag">Data Moat</span>
+          <span class="research-tag" style="color: #3b82f6; border-color: #3b82f6; background: rgba(59, 130, 246, 0.08);">Data Moat</span>
           <h3 class="research-card-title">Firestore Ingestion Moat</h3>
           <p class="research-card-body">Every operational minute of our active DMFS deployment acts as cold storage ingestion for Firestore, mapping out the multi-variant datasets required to fuel our upcoming environmental AI.</p>
         </div>

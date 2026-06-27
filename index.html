@@ -381,9 +381,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
    SECTION 3 — WHY (THE PROBLEM)
    ======================================== */
 #why { background: var(--bg-base); }
-.why-header {
+.why-center {
   margin-bottom: 48px;
-  text-align: left;
+  text-align: center;
 }
 .why-headline {
   font-size: 40px;
@@ -397,6 +397,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   color: var(--text-muted);
   line-height: 1.6;
   max-width: 720px;
+  margin: 0 auto;
 }
 .why-grid {
   display: grid;
@@ -561,6 +562,36 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
+}
+.patent-callout {
+  background: rgba(34, 197, 94, 0.03);
+  border: 1px solid var(--border);
+  border-left: 3.5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 40px;
+}
+.patent-callout-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.patent-callout-icon {
+  stroke: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.patent-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.patent-text strong {
+  color: var(--text-primary);
+}
+.patent-text em {
+  font-style: italic;
+  color: var(--text-primary);
 }
 
 /* ========================================
@@ -2267,8 +2298,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
      ======================================== -->
 <section id="why" class="section-pad">
   <div class="container">
-    <div class="why-header reveal">
-      <span class="label-tag">THE PROBLEM</span>
+    <div class="why-center reveal">
+      <span class="label-tag">THE SYSTEMIC PROBLEM</span>
       <h2 class="why-headline">Drainage fails silently.<br>Cities respond too late.</h2>
       <p class="why-sub">In densely populated urban areas, a drainage blockage can cause significant waterlogging within 20–30 minutes. The failure is invisible — until it isn't.</p>
     </div>
@@ -2299,77 +2330,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     <div class="why-gap-callout reveal">
       <div class="why-gap-text">
         <strong>The gap:</strong> No city in Kerala has a real-time, distributed, automated drainage monitoring system. That is what City Sense is building.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================
-     SECTION 4 — RECOGNITION
-     ======================================== -->
-<section id="recognition" class="section-pad">
-  <div class="container">
-    <div class="recognition-center reveal">
-      <span class="label-tag">INSTITUTIONAL VALIDATION</span>
-      <h2 class="recognition-headline">Vetted &amp; Backed by National Frameworks</h2>
-      <p class="recognition-sub">Built with rigour. Recognised by institutions. Validated by government infrastructure frameworks.</p>
-    </div>
-    <div class="award-strip reveal">
-      <div class="award-badge">
-        <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div class="award-name">Patent No. 565002</div>
-      </div>
-      <div class="award-badge">
-        <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <div class="award-name">₹1 Lakh RUSA Grant</div>
-      </div>
-      <div class="award-badge">
-        <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-        </div>
-        <div class="award-name">CITTIC Incubated</div>
-      </div>
-      <div class="award-badge">
-        <div class="award-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="award-name">Deployed in Kochi</div>
-      </div>
-    </div>
-    <div class="validation-grid reveal">
-      <!-- Card 1 -->
-      <div class="validation-card">
-        <div class="validation-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="validation-tag">CONTEXTUAL CASE STUDY</div>
-        <h3 class="validation-title">Kochi Urban Drainage Failure</h3>
-        <p class="validation-body">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
-        <div class="validation-footer">2018 Kerala Floods Context</div>
-      </div>
-      <!-- Card 2 -->
-      <div class="validation-card" style="transition-delay: 0.1s;">
-        <div class="validation-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
-        </div>
-        <div class="validation-tag">PATENT COLLABORATION</div>
-        <h3 class="validation-title">Drainage Telemetry Architecture</h3>
-        <p class="validation-body">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
-        <div class="validation-footer">Granted April 2025 · CUSAT Inventors</div>
-      </div>
-      <!-- Card 3 -->
-      <div class="validation-card" style="transition-delay: 0.2s;">
-        <div class="validation-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-        </div>
-        <div class="validation-tag">FUNDING FRAMEWORK</div>
-        <h3 class="validation-title">RUSA Development Grant</h3>
-        <p class="validation-body">Formally backed and sanctioned under the Rashtriya Uchchatar Shiksha Abhiyan (RUSA) framework, Ministry of Education, Government of India, for specialized edge prototype operationalization and field deployment.</p>
-        <div class="validation-footer">Ministry of Education, Govt. of India</div>
       </div>
     </div>
   </div>
@@ -2433,139 +2393,6 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         </div>
         <h3 class="capability-title">Weather Cross-Reference</h3>
         <p class="capability-body">Nodes query real-time weather APIs. If rainfall is zero but water height scales to maximum, the system confirms a structural blockage — not a weather anomaly.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================
-     SECTION 6 — ARCHITECTURE
-     ======================================== -->
-<section id="architecture" class="section-pad">
-  <div class="container">
-    <div class="arch-center reveal">
-      <span class="label-tag">TELEMETRY PIPELINE</span>
-      <h2 class="arch-headline">The Intelligence Stack</h2>
-      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
-    </div>
-    <div class="arch-layers">
-      <!-- Layer 4 (top) -->
-      <div class="arch-layer reveal">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">04</span>
-          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
-        </div>
-        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
-      </div>
-      <!-- Layer 3 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">03</span>
-          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
-        </div>
-        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
-      </div>
-      <!-- Layer 2 -->
-      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">02</span>
-          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
-        </div>
-        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
-      </div>
-      <!-- Layer 1 (bottom) -->
-      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
-        <div class="arch-layer-num">
-          <span style="font-size:20px; margin-right:8px;">01</span>
-          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
-        </div>
-        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
-      </div>
-    </div>
-    <!-- Architecture diagram -->
-    <div class="arch-diagram reveal">
-      <div class="arch-diagram-label">City Sense DMFS Platform Architecture</div>
-      <svg width="100%" height="200" viewBox="0 0 440 200" fill="none">
-        <!-- Layers visual -->
-        <rect x="40" y="10" width="360" height="36" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
-        <text x="220" y="33" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em">APPLICATIONS</text>
-        
-        <rect x="60" y="56" width="320" height="36" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
-        <text x="220" y="79" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.8">AI ENGINE</text>
-        
-        <rect x="80" y="102" width="280" height="36" rx="6" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.12)" stroke-width="1"/>
-        <text x="220" y="125" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.6">DATA LAKE</text>
-        
-        <rect x="100" y="148" width="240" height="36" rx="6" fill="rgba(34,197,94,0.03)" stroke="rgba(34,197,94,0.1)" stroke-width="1"/>
-        <text x="220" y="171" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.4">IoT MESH</text>
-        
-        <!-- Connecting arrows -->
-        <line x1="220" y1="46" x2="220" y2="56" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        <line x1="220" y1="92" x2="220" y2="102" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        <line x1="220" y1="138" x2="220" y2="148" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
-        
-        <!-- Side connections -->
-        <circle cx="50" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
-        <circle cx="390" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
-        <line x1="50" y1="28" x2="50" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
-        <line x1="390" y1="28" x2="390" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================
-     SECTION 7 — PIPELINE
-     ======================================== -->
-<section id="pipeline" class="section-pad">
-  <div class="container">
-    <div class="reveal">
-      <span class="label-tag">PRODUCT PIPELINE</span>
-      <h2 class="pipeline-headline">Multi-Pronged Scaling</h2>
-      <p class="pipeline-sub">Strategic rollout of urban infrastructure modules.</p>
-    </div>
-    <div class="timeline">
-      <!-- Phase 1 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Phase 1 · Active Pilot</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              Drainage Monitoring (DMFS)
-              <span class="timeline-badge badge-completed">Completed</span>
-            </div>
-            <div class="timeline-card-body">Patented real-time flood risk telemetry inside urban drainage corridors. Integrated edge processing with automated warning alerts. Currently field-testing in Kochi.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Phase 2 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Phase 2 · Roadmap</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              Water Quality Metrics
-              <span class="timeline-badge badge-progress">Planned</span>
-            </div>
-            <div class="timeline-card-body">Continuous in-situ monitoring of key water parameters (pH, turbidity, dissolved oxygen) across municipal supply networks.</div>
-          </div>
-        </div>
-      </div>
-      <!-- Phase 3 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-date">Phase 3 · Future R&D</div>
-          <div class="timeline-card">
-            <div class="timeline-card-title">
-              AI Flood Prediction
-              <span class="timeline-badge badge-upcoming">Upcoming</span>
-            </div>
-            <div class="timeline-card-body">Predictive machine learning models trained on structural spatial-temporal telemetry databases to forecast flood events hours in advance.</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -2857,6 +2684,223 @@ textarea.form-input { resize: vertical; min-height: 100px; }
             </div>
           </div>
           <a href="#contact" class="btn btn-secondary dmfs-btn-mobile" style="margin-top: 24px; width: 100%; justify-content: center;">Initiate Pilot Agreement →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 4 — RECOGNITION
+     ======================================== -->
+<section id="recognition" class="section-pad">
+  <div class="container">
+    <div class="recognition-center reveal">
+      <span class="label-tag">INSTITUTIONAL VALIDATION</span>
+      <h2 class="recognition-headline">Vetted &amp; Backed by National Frameworks</h2>
+      <p class="recognition-sub">Built with rigour. Recognised by institutions. Validated by government infrastructure frameworks.</p>
+    </div>
+    <div class="award-strip reveal">
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="award-name">Patent No. 565002</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="award-name">₹1 Lakh RUSA Grant</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        </div>
+        <div class="award-name">CITTIC Incubated</div>
+      </div>
+      <div class="award-badge">
+        <div class="award-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="award-name">Deployed in Kochi</div>
+      </div>
+    </div>
+    <div class="validation-grid reveal">
+      <!-- Card 1 -->
+      <div class="validation-card">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="validation-tag">CONTEXTUAL CASE STUDY</div>
+        <h3 class="validation-title">Kochi Urban Drainage Failure</h3>
+        <p class="validation-body">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
+        <div class="validation-footer">2018 Kerala Floods Context</div>
+      </div>
+      <!-- Card 2 -->
+      <div class="validation-card" style="transition-delay: 0.1s;">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+        </div>
+        <div class="validation-tag">PATENT COLLABORATION</div>
+        <h3 class="validation-title">Drainage Telemetry Architecture</h3>
+        <p class="validation-body">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
+        <div class="validation-footer">Granted April 2025 · CUSAT Inventors</div>
+      </div>
+      <!-- Card 3 -->
+      <div class="validation-card" style="transition-delay: 0.2s;">
+        <div class="validation-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <div class="validation-tag">FUNDING FRAMEWORK</div>
+        <h3 class="validation-title">RUSA Development Grant</h3>
+        <p class="validation-body">Formally backed and sanctioned under the Rashtriya Uchchatar Shiksha Abhiyan (RUSA) framework, Ministry of Education, Government of India, for specialized edge prototype operationalization and field deployment.</p>
+        <div class="validation-footer">Ministry of Education, Govt. of India</div>
+      </div>
+    </div>
+    
+    <!-- Patent Info Callout -->
+    <div class="patent-callout reveal" style="margin-top: 40px;">
+      <div class="patent-callout-content">
+        <svg class="patent-callout-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span class="patent-text">
+          <strong>Patent No: 565002 (App No. 202441039460)</strong> &middot; 
+          Title: <em>IoT-Based Drainage Monitoring and Flood Alert System</em> &middot; 
+          Inventors: <strong>Dr. Santosh Kumar, Dr. Daleesha M. Viswanathan, Ananthu T. J., Sony K. Martin, and Joyal Kusmos</strong> &middot; 
+          Collaboration: <em>CitySense is currently developing and enhancing this drainage monitoring and flood alert solution in collaboration with the original patent holders, with a focus on improving scalability, deployment readiness, and urban impact.</em>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 6 — ARCHITECTURE
+     ======================================== -->
+<section id="architecture" class="section-pad">
+  <div class="container">
+    <div class="arch-center reveal">
+      <span class="label-tag">TELEMETRY PIPELINE</span>
+      <h2 class="arch-headline">The Intelligence Stack</h2>
+      <p class="arch-sub">Edge-to-Cloud Drainage Telemetry Architecture</p>
+    </div>
+    <div class="arch-layers">
+      <!-- Layer 4 (top) -->
+      <div class="arch-layer reveal">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">04</span>
+          <span class="arch-layer-label">DASHBOARD &amp; COMMAND CENTER</span>
+        </div>
+        <div class="arch-layer-items">React Analytics Console, Real-time Visualization, GPS-tagged Map Interface, Historical Data Logging</div>
+      </div>
+      <!-- Layer 3 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.1s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">03</span>
+          <span class="arch-layer-label">CLOUD INFRASTRUCTURE</span>
+        </div>
+        <div class="arch-layer-items">Cloudflare Workers (Serverless Edge Logic), Firebase RTDB (Live Admin Streams), Firestore (AI Training Cold Storage)</div>
+      </div>
+      <!-- Layer 2 -->
+      <div class="arch-layer reveal" style="transition-delay: 0.2s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">02</span>
+          <span class="arch-layer-label">COMMUNICATION PROTOCOL</span>
+        </div>
+        <div class="arch-layer-items">EMQX Cloud Broker (MQTT), Sub-GHz RF Wireless Transmission, Secure Telemetry Payload Delivery</div>
+      </div>
+      <!-- Layer 1 (bottom) -->
+      <div class="arch-layer reveal" style="transition-delay: 0.3s;">
+        <div class="arch-layer-num">
+          <span style="font-size:20px; margin-right:8px;">01</span>
+          <span class="arch-layer-label">SENSING &amp; EDGE NODES</span>
+        </div>
+        <div class="arch-layer-items">Ultrasonic Water Level Sensors, Optical Flow Velocity Sensors, GPS Telemetry Modules, Arduino Mega + ESP8266 Edge Controllers</div>
+      </div>
+    </div>
+    <!-- Architecture diagram -->
+    <div class="arch-diagram reveal">
+      <div class="arch-diagram-label">City Sense DMFS Platform Architecture</div>
+      <svg width="100%" height="200" viewBox="0 0 440 200" fill="none">
+        <!-- Layers visual -->
+        <rect x="40" y="10" width="360" height="36" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
+        <text x="220" y="33" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em">APPLICATIONS</text>
+        
+        <rect x="60" y="56" width="320" height="36" rx="6" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
+        <text x="220" y="79" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.8">AI ENGINE</text>
+        
+        <rect x="80" y="102" width="280" height="36" rx="6" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.12)" stroke-width="1"/>
+        <text x="220" y="125" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.6">DATA LAKE</text>
+        
+        <rect x="100" y="148" width="240" height="36" rx="6" fill="rgba(34,197,94,0.03)" stroke="rgba(34,197,94,0.1)" stroke-width="1"/>
+        <text x="220" y="171" fill="#22C55E" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="0.08em" opacity="0.4">IoT MESH</text>
+        
+        <!-- Connecting arrows -->
+        <line x1="220" y1="46" x2="220" y2="56" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="92" x2="220" y2="102" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="138" x2="220" y2="148" stroke="#22C55E" stroke-width="1" opacity="0.3"/>
+        
+        <!-- Side connections -->
+        <circle cx="50" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
+        <circle cx="390" cy="28" r="3" fill="#22C55E" opacity="0.5"/>
+        <line x1="50" y1="28" x2="50" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
+        <line x1="390" y1="28" x2="390" y2="166" stroke="#22C55E" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 7 — PIPELINE
+     ======================================== -->
+<section id="pipeline" class="section-pad">
+  <div class="container">
+    <div class="reveal">
+      <span class="label-tag">PRODUCT PIPELINE</span>
+      <h2 class="pipeline-headline">Multi-Pronged Scaling</h2>
+      <p class="pipeline-sub">Strategic rollout of urban infrastructure modules.</p>
+    </div>
+    <div class="timeline">
+      <!-- Phase 1 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Phase 1 · Active Pilot</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Drainage Monitoring (DMFS)
+              <span class="timeline-badge badge-completed">Completed</span>
+            </div>
+            <div class="timeline-card-body">Patented real-time flood risk telemetry inside urban drainage corridors. Integrated edge processing with automated warning alerts. Currently field-testing in Kochi.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Phase 2 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Phase 2 · Roadmap</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              Water Quality Metrics
+              <span class="timeline-badge badge-progress">Planned</span>
+            </div>
+            <div class="timeline-card-body">Continuous in-situ monitoring of key water parameters (pH, turbidity, dissolved oxygen) across municipal supply networks.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Phase 3 -->
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-date">Phase 3 · Future R&D</div>
+          <div class="timeline-card">
+            <div class="timeline-card-title">
+              AI Flood Prediction
+              <span class="timeline-badge badge-upcoming">Upcoming</span>
+            </div>
+            <div class="timeline-card-body">Predictive machine learning models trained on structural spatial-temporal telemetry databases to forecast flood events hours in advance.</div>
+          </div>
         </div>
       </div>
     </div>

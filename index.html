@@ -1173,8 +1173,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
    SECTION 12 — CONTACT / FOOTER
    ======================================== */
 #contact {
-  background: #070F1C;
+  background: var(--bg-surface);
   padding-top: 0;
+  border-top: 1px solid var(--border);
 }
 .contact-top {
   height: 120px;
@@ -1197,7 +1198,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--text-primary);
   margin-bottom: 12px;
 }
 .footer-brand .footer-tagline {
@@ -1220,7 +1221,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   text-decoration: none;
   transition: border-color 0.3s, color 0.3s;
 }
-.footer-brand-icons a:hover { border-color: var(--accent); color: var(--accent); }
+.footer-brand-icons a:hover { border-color: var(--text-primary); color: var(--text-primary); }
 .footer-legal-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1239,13 +1240,14 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   font-size: 14px;
   transition: color 0.3s;
 }
-.footer-legal-links a:hover { color: var(--accent); }
+.footer-legal-links a:hover { color: var(--text-primary); }
 /* Contact form */
 .footer-form-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-green);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 .footer-form-header {
   display: flex; align-items: center; gap: 10px;
@@ -1256,7 +1258,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
+  color: var(--text-primary);
 }
 .form-row {
   display: flex;
@@ -1269,7 +1271,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  background: rgba(10,22,40,0.6);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px 16px;
@@ -1281,8 +1283,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .form-input::placeholder { color: var(--text-muted); }
 .form-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
 }
 textarea.form-input { resize: vertical; min-height: 100px; }
 .form-submit {
@@ -1357,7 +1359,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  background: rgba(10,22,40,0.6);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px 16px;
@@ -1373,10 +1375,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
 }
 .form-select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
 }
 .form-select option { background: var(--bg-card); color: var(--text-primary); }
 
@@ -3407,7 +3414,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                 <textarea class="form-input" placeholder="Outline localization demands, scaling terms, or pipeline integration scopes..." rows="4" id="contactMessage" required></textarea>
               </div>
               <div class="form-submit" style="margin-top: 16px;">
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Transmit Engagement Parameters →</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; background: #09090b; color: #ffffff;">Transmit Engagement Parameters →</button>
               </div>
             </form>
             <div id="formSuccessMessage" style="display:none; text-align:center; padding: 24px 10px;">

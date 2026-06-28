@@ -45,10 +45,16 @@ body {
   --radius-sm: 4px;
   --max-width: 1200px;
   --section-pad: 100px;
+
+  --fs-hero: clamp(36px, 6vw, 56px);
+  --fs-h2: clamp(26px, 4vw, 40px);
+  --fs-h3: clamp(20px, 3vw, 28px);
+  --fs-h4: clamp(16px, 2.2vw, 20px);
 }
 
 /* ===== UTILITIES ===== */
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+.font-mono { font-family: var(--font-mono); }
 .label-tag {
   font-family: var(--font-mono);
   text-transform: uppercase;
@@ -207,7 +213,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .hero-label .pulse-dot { width: 6px; height: 6px; }
 .hero-title {
-  font-size: 56px;
+  font-size: var(--fs-hero);
   line-height: 1.1;
   margin-bottom: 20px;
 }
@@ -231,8 +237,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   border-left: 1px solid var(--border);
 }
 .hero-stat-value {
-  font-family: var(--font-heading);
-  font-size: 32px; font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  font-weight: 700;
   color: var(--accent);
 }
 .hero-stat-label {
@@ -287,8 +294,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   margin-bottom: 12px;
 }
 .dashboard-sub-card .card-value {
-  font-family: var(--font-heading);
-  font-size: 28px; font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3); font-weight: 700;
   color: var(--accent);
   display: flex; align-items: baseline; gap: 4px;
 }
@@ -309,7 +316,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   text-align: center;
 }
 .about-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   line-height: 1.15;
   margin: 16px 0 12px;
 }
@@ -402,7 +409,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   text-align: center;
 }
 .why-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   line-height: 1.15;
   margin: 16px 0;
   color: var(--text-primary);
@@ -441,7 +448,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   box-shadow: 0 0 25px rgba(var(--accent-color-rgb), 0.25);
 }
 .why-card-value {
-  font-size: 36px;
+  font-family: var(--font-mono);
+  font-size: clamp(24px, 3.5vw, 36px);
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 8px;
@@ -485,7 +493,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 #recognition { background: var(--bg-surface); }
 .recognition-center { text-align: center; }
 .recognition-headline {
-  font-size: 36px;
+  font-size: var(--fs-h2);
   margin: 16px 0 12px;
 }
 .recognition-sub {
@@ -628,7 +636,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 #capabilities { background: var(--bg-base); }
 .capabilities-center { text-align: center; }
 .capabilities-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 12px;
 }
 .capabilities-sub {
@@ -684,7 +692,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 #architecture { background: var(--bg-surface); }
 .arch-center { text-align: center; }
 .arch-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 8px;
 }
 .arch-sub {
@@ -750,7 +758,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
    ======================================== */
 #pipeline { background: var(--bg-base); }
 .pipeline-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 8px;
 }
 .pipeline-sub {
@@ -902,8 +910,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   margin-bottom: 4px;
 }
 .dmfs-stat .stat-value {
-  font-family: var(--font-heading);
-  font-size: 28px; font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3); font-weight: 700;
   color: var(--accent);
 }
 .dmfs-divider {
@@ -940,7 +948,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
    ======================================== */
 #research { background: var(--bg-base); }
 .research-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 8px;
 }
 .research-sub {
@@ -1031,7 +1039,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 #partnerships { background: var(--bg-surface); }
 .partnerships-center { text-align: center; }
 .partnerships-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 48px;
 }
 .partnerships-grid {
@@ -1098,7 +1106,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 #team { background: var(--bg-base); }
 .team-center { text-align: center; }
 .team-headline {
-  font-size: 40px;
+  font-size: var(--fs-h2);
   margin: 16px 0 12px;
 }
 .team-sub {
@@ -2808,13 +2816,13 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="award-icon" style="background: rgba(139, 92, 246, 0.08); color: #8b5cf6;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
-        <div class="award-name">Patent No. 565002</div>
+        <div class="award-name">Patent No. <span class="font-mono">565002</span></div>
       </div>
       <div class="award-badge">
         <div class="award-icon" style="background: rgba(16, 185, 129, 0.08); color: #10b981;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
-        <div class="award-name">₹1 Lakh RUSA Grant</div>
+        <div class="award-name">₹<span class="font-mono">1</span> Lakh RUSA Grant</div>
       </div>
       <div class="award-badge">
         <div class="award-icon" style="background: rgba(0, 142, 151, 0.08); color: var(--accent-color);">
@@ -2837,8 +2845,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         </div>
         <div class="validation-tag">CONTEXTUAL CASE STUDY</div>
         <h3 class="validation-title">Kochi Urban Drainage Failure</h3>
-        <p class="validation-body">During major climate occurrences like the 2018 Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
-        <div class="validation-footer">2018 Kerala Floods Context</div>
+        <p class="validation-body">During major climate occurrences like the <span class="font-mono">2018</span> Kerala Floods, urban centers like Kochi faced severe operational amplification because internal city drainage assets failed silently under high load. Monitoring must be done from the inside out.</p>
+        <div class="validation-footer"><span class="font-mono">2018</span> Kerala Floods Context</div>
       </div>
       <!-- Card 2 -->
       <div class="validation-card" style="transition-delay: 0.1s;">
@@ -2847,8 +2855,8 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         </div>
         <div class="validation-tag">PATENT COLLABORATION</div>
         <h3 class="validation-title">Drainage Telemetry Architecture</h3>
-        <p class="validation-body">Patent No. 565002 (App No. 202441039460) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
-        <div class="validation-footer">Granted April 2025 · CUSAT Inventors</div>
+        <p class="validation-body">Patent No. <span class="font-mono">565002</span> (App No. <span class="font-mono">202441039460</span>) — IoT-Based Drainage Monitoring and Flood Alert System. City Sense actively develops and refines this architecture via a mutual innovation agreement with the original patent holders.</p>
+        <div class="validation-footer">Granted April <span class="font-mono">2025</span> · CUSAT Inventors</div>
       </div>
       <!-- Card 3 -->
       <div class="validation-card" style="transition-delay: 0.2s;">
@@ -2867,7 +2875,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="patent-callout-content">
         <svg class="patent-callout-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         <span class="patent-text">
-          <strong>Patent No: 565002 (App No. 202441039460)</strong> &middot; 
+          <strong>Patent No: <span class="font-mono">565002</span> (App No. <span class="font-mono">202441039460</span>)</strong> &middot; 
           Title: <em>IoT-Based Drainage Monitoring and Flood Alert System</em> &middot; 
           Inventors: <strong>Dr. Santosh Kumar, Dr. Daleesha M. Viswanathan, Ananthu T. J., Sony K. Martin, and Joyal Kusmos</strong> &middot; 
           Collaboration: <em>CitySense is currently developing and enhancing this drainage monitoring and flood alert solution in collaboration with the original patent holders, with a focus on improving scalability, deployment readiness, and urban impact.</em>
@@ -2892,7 +2900,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Phase 1 · Active Pilot</div>
+          <div class="timeline-date">Phase <span class="font-mono">1</span> · Active Pilot</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
               Drainage Monitoring (DMFS)
@@ -2906,7 +2914,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Phase 2 · Roadmap</div>
+          <div class="timeline-date">Phase <span class="font-mono">2</span> · Roadmap</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
               Water Quality Metrics
@@ -2920,7 +2928,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-date">Phase 3 · Future R&D</div>
+          <div class="timeline-date">Phase <span class="font-mono">3</span> · Future R&D</div>
           <div class="timeline-card">
             <div class="timeline-card-title">
               AI Flood Prediction
@@ -3006,7 +3014,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
         <div class="research-card-content">
           <span class="research-tag" style="color: #16a34a; border-color: #16a34a; background: rgba(22, 163, 74, 0.08);">Edge Signal Filtering</span>
           <h3 class="research-card-title">Rolling-Average Noise Filtration</h3>
-          <p class="research-card-body">Edge nodes poll physical sensors every 5 seconds, computing a rolling 1-minute mathematical average (12 data slices) to neutralize noise from structural splashing or wave action.</p>
+          <p class="research-card-body">Edge nodes poll physical sensors every <span class="font-mono">5</span> seconds, computing a rolling <span class="font-mono">1</span>-minute mathematical average (<span class="font-mono">12</span> data slices) to neutralize noise from structural splashing or wave action.</p>
         </div>
       </div>
       <!-- Card 2 -->
@@ -3236,7 +3244,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
     <div class="team-center reveal">
       <span class="label-tag">OUR TEAM</span>
       <h2 class="team-headline">The Founding Execution Team</h2>
-      <p class="team-sub">City Sense was formalized and operationalized into a registered partnership firm on 20 December 2025 by four B.Tech Information Technology students (2024–2028 Batch) at CUSAT.</p>
+      <p class="team-sub">City Sense was formalized and operationalized into a registered partnership firm on <span class="font-mono">20</span> December <span class="font-mono">2025</span> by four B.Tech Information Technology students (<span class="font-mono">2024–2028</span> Batch) at CUSAT.</p>
     </div>
     <div class="team-grid">
       <!-- Member 1 -->
@@ -3419,7 +3427,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       </div>
       <!-- Bottom strip -->
       <div class="footer-bottom">
-        <div class="footer-copy">© 2026 City Sense. All rights reserved.<br><span style="font-size: 11px; opacity: 0.6;">Registered Partnership Firm (Est. 20 Dec 2025). Cochin, Kerala, India.</span></div>
+        <div class="footer-copy">© <span class="font-mono">2026</span> City Sense. All rights reserved.<br><span style="font-size: 11px; opacity: 0.6;">Registered Partnership Firm (Est. <span class="font-mono">20</span> Dec <span class="font-mono">2025</span>). Cochin, Kerala, India.</span></div>
 
       </div>
     </div>

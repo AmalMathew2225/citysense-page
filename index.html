@@ -1254,7 +1254,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 .footer-form-header {
   display: flex; align-items: center; gap: 10px;
@@ -1262,9 +1262,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
 }
 .footer-form-header .title {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--text-primary);
 }
 .form-row {
@@ -1288,10 +1288,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-heading); font-weight: 700; color: 
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
+.form-input:hover {
+  border-color: rgba(0, 0, 0, 0.16);
+}
 .form-input::placeholder { color: var(--text-muted); }
 .form-input:focus {
   border-color: var(--text-primary);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
 }
 textarea.form-input { resize: vertical; min-height: 100px; }
 .form-submit {
@@ -1379,11 +1382,23 @@ textarea.form-input { resize: vertical; min-height: 100px; }
   background-size: 16px;
   padding-right: 40px;
 }
+.form-select:hover {
+  border-color: rgba(0, 0, 0, 0.16);
+}
 .form-select:focus {
   border-color: var(--text-primary);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
 }
 .form-select option { background: var(--bg-card); color: var(--text-primary); }
+
+.form-submit button[type="submit"] {
+  transition: all 0.3s ease;
+}
+.form-submit button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: #18181b !important;
+}
 
 /* ===== IOT WORKFLOW ANIMATION ===== */
 @keyframes waterFlow {
@@ -2266,7 +2281,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
       <a href="#capabilities">DMFS</a>
       <a href="#recognition">Credentials</a>
       <a href="#team">Team</a>
-      <a href="#contact" class="btn btn-secondary navbar-cta">Partner With Us</a>
+      <a href="#contact" class="btn btn-secondary navbar-cta">Contact</a>
     </div>
     <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -3370,15 +3385,15 @@ textarea.form-input { resize: vertical; min-height: 100px; }
           <div class="footer-form-card">
             <div class="footer-form-header">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span class="title">ENGAGEMENT INTERFACE</span>
+              <span class="title">Contact Us</span>
             </div>
             <form id="engagementForm">
               <div class="form-row" style="margin-bottom: 16px;">
                 <select id="partnerType" class="form-select" required>
-                  <option value="government">Government / Municipal Body (CSML / Pilot Deployments)</option>
-                  <option value="technology">Technology Partner (Hardware Production / Edge AI Calibration)</option>
-                  <option value="research">Research Collaborator (Hydrology / University Grant Alignments)</option>
-                  <option value="investor">Investor / Incubator Network (Seed / Pre-Series A Capital Allocation)</option>
+                  <option value="government">Government / Municipal Body</option>
+                  <option value="technology">Technology Partner</option>
+                  <option value="research">Research Collaborator</option>
+                  <option value="investor">Investor / Incubator Network</option>
                 </select>
               </div>
               <div class="form-row">
@@ -3392,7 +3407,7 @@ textarea.form-input { resize: vertical; min-height: 100px; }
                 <textarea class="form-input" placeholder="Outline localization demands, scaling terms, or pipeline integration scopes..." rows="4" id="contactMessage" required></textarea>
               </div>
               <div class="form-submit" style="margin-top: 16px;">
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; background: #09090b; color: #ffffff;">Transmit Engagement Parameters →</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; background: #09090b; color: #ffffff;">Send Message →</button>
               </div>
             </form>
             <div id="formSuccessMessage" style="display:none; text-align:center; padding: 24px 10px;">

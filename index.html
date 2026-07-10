@@ -60,6 +60,7 @@
       --accent: #050505;
       --text-primary: #09090b;
       --text-muted: #52525b;
+      --text-secondary: var(--text-muted);
       --border: rgba(0, 0, 0, 0.08);
       --border-green: rgba(0, 142, 151, 0.15);
       --accent-color: #008e97;
@@ -2214,6 +2215,74 @@
       position: relative;
     }
 
+    /* Native Live Status Pulse */
+    .live-pulse {
+      position: relative;
+      display: inline-flex;
+      width: 8px;
+      height: 8px;
+    }
+    .pulse-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #34d399;
+      opacity: 0.75;
+      animation: pulse-ring-anim 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .pulse-dot-inner {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+    }
+    @keyframes pulse-ring-anim {
+      0% {
+        transform: scale(1);
+        opacity: 0.75;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    /* Native Spinner Loader */
+    .pulse-spinner {
+      animation: spin 1s linear infinite;
+      color: #34d399;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scene 4 Active States Highlights */
+    .retrieval-middle-node, .retrieval-bottom-node, .retrieval-dash-card {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .retrieval-middle-node.active {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+    }
+    .retrieval-bottom-node.active {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+    }
+    .retrieval-middle-node .retrieval-node-title.active {
+      color: #fb923c !important;
+      font-weight: 600;
+    }
+    .retrieval-bottom-node .retrieval-node-title.active {
+      color: #facc15 !important;
+      font-weight: 600;
+    }
+    .retrieval-dash-card.active {
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+    }
+
     /* Scene Specific Classes */
     .drainage-environment {
       position: relative;
@@ -3623,10 +3692,9 @@
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
                           </svg>
                           <span class="title">EMQX Cloud Platform</span>
-                          <span class="relative flex h-2 w-2" style="margin-left: auto;">
-                            <span
-                              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                          <span class="live-pulse" style="margin-left: auto;">
+                            <span class="pulse-ring"></span>
+                            <span class="pulse-dot-inner"></span>
                           </span>
                         </div>
                         <div class="console-body" id="workflowTerminal"></div>
@@ -3743,7 +3811,7 @@
                           </span>
                         </div>
                         <div class="pipeline-status-popup" id="workflowStatusText">
-                          <svg class="animate-spin text-emerald-400" style="width: 10px; height: 10px;"
+                          <svg class="pulse-spinner" style="width: 10px; height: 10px;"
                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                             <circle cx="12" cy="12" r="10" stroke-opacity="0.25" />
                             <path d="M12 2v4" />
@@ -3762,7 +3830,7 @@
                             <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
                           </svg>
                         </div>
-                        <span class="font-bold text-yellow-400 text-[10px]">Firebase RTDB</span>
+                        <span style="font-weight: 700; color: #eab308; font-size: 10px;">Firebase RTDB</span>
                       </div>
                     </div>
                   </div>
@@ -4832,11 +4900,11 @@
           chartBar1.style.height = '20%';
           chartBar2.style.height = '16%';
           chartBar3.style.height = '20%';
-          cfNode.className = "retrieval-middle-node scale-105 shadow-[0_0_15px_rgba(249,115,22,0.2)]";
+          cfNode.className = "retrieval-middle-node active";
           cfNode.style.borderColor = '#f97316';
           cfIcon.style.background = 'rgba(249,115,22,0.2)';
           cfIcon.style.color = '#f97316';
-          cfTitle.className = "retrieval-node-title text-orange-400";
+          cfTitle.className = "retrieval-node-title active";
           waveCfToDb.style.display = 'block';
         } else if (seqState === 2) {
           statusTextEl.textContent = '"Database retrieving records..."';
@@ -4849,11 +4917,11 @@
           chartBar1.style.height = '20%';
           chartBar2.style.height = '16%';
           chartBar3.style.height = '20%';
-          dbNode.className = "retrieval-bottom-node scale-105 shadow-[0_0_15px_rgba(234,179,8,0.2)]";
+          dbNode.className = "retrieval-bottom-node active";
           dbNode.style.borderColor = '#eab308';
           dbIcon.style.background = 'rgba(234,179,8,0.2)';
           dbIcon.style.color = '#eab308';
-          dbTitle.className = "retrieval-node-title text-yellow-400";
+          dbTitle.className = "retrieval-node-title active";
           waveDbToCf.style.display = 'block';
         } else if (seqState === 3) {
           statusTextEl.textContent = '"Pushing processed payload..."';
@@ -4866,18 +4934,18 @@
           chartBar1.style.height = '20%';
           chartBar2.style.height = '16%';
           chartBar3.style.height = '20%';
-          cfNode.className = "retrieval-middle-node scale-105 shadow-[0_0_15px_rgba(249,115,22,0.2)]";
+          cfNode.className = "retrieval-middle-node active";
           cfNode.style.borderColor = '#f97316';
           cfIcon.style.background = 'rgba(249,115,22,0.2)';
           cfIcon.style.color = '#f97316';
-          cfTitle.className = "retrieval-node-title text-orange-400";
+          cfTitle.className = "retrieval-node-title active";
           waveCfToDash.style.display = 'block';
         } else if (seqState === 4) {
           statusTextEl.textContent = '● Live Sync Active';
           statusTextEl.className = "retrieval-dash-badge font-bold";
           statusTextEl.style.color = '#34d399';
           statusTextEl.style.background = 'rgba(52,211,153,0.1)';
-          cardEl.className = "retrieval-dash-card shadow-[0_0_20px_rgba(34,197,94,0.15)]";
+          cardEl.className = "retrieval-dash-card active";
           cardEl.style.borderColor = 'rgba(34,197,94,0.6)';
           metricLevelEl.textContent = "35.0 cm";
           metricRateEl.textContent = "2.62 L/min";

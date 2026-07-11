@@ -438,77 +438,13 @@
    ======================================== */
     #about {
       background: var(--bg-surface);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .about-visual-wrapper {
+    }    .about-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-
-    .about-visual-card {
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 1 / 1;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .about-visual-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
-    }
-
-    .about-placeholder-card {
       flex-direction: column;
-      gap: 28px;
-    }
-
-    .about-placeholder-logo {
-      max-width: 55%;
-      max-height: 55%;
-      object-fit: contain;
-      opacity: 0.5;
-      filter: grayscale(20%);
-    }
-
-    .about-placeholder-text {
-      display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .about-placeholder-line {
-      width: 24px;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .about-placeholder-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      opacity: 0.5;
-    }
-
-    .about-content {
-      text-align: left;
     }
 
     .about-headline {
@@ -522,11 +458,11 @@
       height: 3px;
       background: var(--accent);
       border-radius: 2px;
-      margin: 0 0 28px 0;
+      margin: 0 auto 28px;
     }
 
     .about-text {
-      font-size: 17px;
+      font-size: clamp(15px, 1.2vw + 11px, 17px);
       color: var(--text-muted);
       line-height: 1.7;
       margin-bottom: 16px;
@@ -536,7 +472,7 @@
       display: flex;
       gap: 16px;
       margin-top: 32px;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     .about-pill {
@@ -573,81 +509,6 @@
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--accent);
-    }
-
-    @media (max-width: 991px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .about-content {
-        text-align: center;
-      }
-      .about-accent-bar {
-        margin: 0 auto 28px;
-      }
-      .about-pills {
-        justify-content: center;
-      }
-      .about-visual-card {
-        aspect-ratio: 4 / 3;
-        padding: 32px;
-        max-width: 320px;
-        margin: 0 auto;
-      }
-    }
-
-    /* About right — urban data mesh */
-    .about-visual {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .about-visual-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .about-visual-header .title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .about-visual-header .dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .about-visual-header .dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      opacity: 0.3;
-    }
-
-    .about-visual-header .dots span:last-child {
-      background: var(--accent);
-      opacity: 1;
-    }
-
-    .about-visual-body {
-      padding: 24px;
-      min-height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     /* ========================================
@@ -3297,51 +3158,38 @@
      ======================================== -->
   <section id="about" class="section-pad">
     <div class="container">
-      <div class="about-grid">
-        <!-- Left: Placeholder Card (Will be updated soon) -->
-        <div class="about-visual-wrapper reveal">
-          <div class="about-visual-card about-placeholder-card">
-            <img src="logo.png" alt="City Sense Logo" class="about-placeholder-logo">
-            <div class="about-placeholder-text">
-              <span class="about-placeholder-line"></span>
-              <span class="about-placeholder-label">WILL BE UPDATED SOON</span>
-              <span class="about-placeholder-line"></span>
+      <!-- Centered Text Content -->
+      <div class="about-content reveal">
+        <span class="label-tag">ABOUT CITY SENSE</span>
+        <h2 class="about-headline">Incubated startup building urban intelligence</h2>
+        <div class="about-accent-bar"></div>
+        <p class="about-text">City Sense is a technology startup incubated at CITTIC focused on building intelligent solutions for modern cities. Leveraging IoT, AI, cloud platforms, and real-time data systems, we develop technologies that improve urban infrastructure, environmental monitoring, public safety, and operational efficiency.</p>
+        <p class="about-text">Working closely with researchers, industry experts, and government stakeholders, we bridge the gap between academic innovation and practical deployment—creating scalable, reliable, and impact-driven solutions for the cities of tomorrow.</p>
+        <div class="about-pills">
+          <div class="about-pill">
+            <div class="about-pill-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="about-pill-text">
+              <div class="pill-title">CITTIC, CUSAT</div>
+              <div class="pill-sub">Incubated Startup</div>
             </div>
           </div>
-        </div>
-        <!-- Right: Text Content -->
-        <div class="about-content reveal">
-          <span class="label-tag">ABOUT CITY SENSE</span>
-          <h2 class="about-headline">Incubated startup building urban intelligence</h2>
-          <div class="about-accent-bar"></div>
-          <p class="about-text">City Sense is a technology startup incubated at CITTIC focused on building intelligent solutions for modern cities. Leveraging IoT, AI, cloud platforms, and real-time data systems, we develop technologies that improve urban infrastructure, environmental monitoring, public safety, and operational efficiency.</p>
-          <p class="about-text">Working closely with researchers, industry experts, and government stakeholders, we bridge the gap between academic innovation and practical deployment—creating scalable, reliable, and impact-driven solutions for the cities of tomorrow.</p>
-          <div class="about-pills">
-            <div class="about-pill">
-              <div class="about-pill-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div class="about-pill-text">
-                <div class="pill-title">CITTIC, CUSAT</div>
-                <div class="pill-sub">Incubated Startup</div>
-              </div>
+          <div class="about-pill">
+            <div class="about-pill-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
             </div>
-            <div class="about-pill">
-              <div class="about-pill-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                </svg>
-              </div>
-              <div class="about-pill-text">
-                <div class="pill-title">REGISTERED FIRM</div>
-                <div class="pill-sub">Est. Dec 2025</div>
-              </div>
+            <div class="about-pill-text">
+              <div class="pill-title">REGISTERED FIRM</div>
+              <div class="pill-sub">Est. Dec 2025</div>
             </div>
           </div>
         </div>
